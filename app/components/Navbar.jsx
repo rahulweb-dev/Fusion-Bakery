@@ -91,7 +91,7 @@ export default function Navbar() {
 
             {/* CLOUD KITCHEN */}
             <Link
-              href="/cloud-kitchen"
+              href="https://ghostkitchensindia.com/"
               className="
                 bg-[#6A1B9A] hover:bg-[#4A1070]
                 text-white font-semibold rounded-xl shadow-md
@@ -189,7 +189,7 @@ export default function Navbar() {
               {/* CLOUD KITCHEN (mobile) */}
               <li className="animate-fadeSlide" style={{ animationDelay: "0.5s" }}>
                 <Link
-                  href="/cloud-kitchen"
+                  href="https://ghostkitchensindia.com/"
                   onClick={() => setMobileOpen(false)}
                   className="
                     block py-4 rounded-2xl 
