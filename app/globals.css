@@ -12,3 +12,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+@keyframes modalShake {
+  0% { transform: scale(1) translateX(0); }
+  20% { transform: scale(0.97) translateX(-6px); }
+  40% { transform: scale(0.97) translateX(6px); }
+  60% { transform: scale(0.97) translateX(-6px); }
+  80% { transform: scale(0.97) translateX(6px); }
+  100% { transform: scale(1) translateX(0); }
+}
+
+.animate-shake-modal {
+  animation: modalShake 0.4s ease-in-out;
+}
