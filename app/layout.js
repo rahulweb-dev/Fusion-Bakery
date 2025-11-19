@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import ModalSelect from './components/ModalSelect';
+import Navbar from './components/Navbar';
+import { SelectProvider } from './context/SelectContext';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -23,8 +25,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ModalSelect />
-        {children}
+        {' '}
+        <SelectProvider>
+          <Navbar />
+          <ModalSelect />
+          {children}
+        </SelectProvider>
       </body>
     </html>
   );
