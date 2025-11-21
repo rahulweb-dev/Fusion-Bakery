@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className='relative w-full h-[100vh] md:h-[110vh] flex items-center overflow-hidden'>
+    <section className='relative w-full h-screen md:h-[110vh] flex items-center overflow-hidden'>
       {/* Background Image */}
       <Image
         src='/images/footer.webp'

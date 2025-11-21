@@ -10,12 +10,14 @@ import Navbar from './components/Navbar';
 import SweetStory from './components/SweetStory';
 import TestimonialSection from './components/TestimonialSection';
 import { useSelect } from './context/SelectContext';
+import HeroSection from './Corporate-components/HeroSection';
 export default function Home() {
   const { select } = useSelect();
   return (
     <>
       <Navbar />
       {select === 'Cloud Kitchen' ? 'cloud' : <Hero />}
+      {select === 'Cloud Kitchen' ? 'cloud' : <HeroSection />}
       {select === 'Cloud Kitchen' ? 'cloud' : <AboutSection />}
       {select === 'Cloud Kitchen' ? 'cloud' : <FreshServices />}
       {select === 'Cloud Kitchen' ? 'cloud' : <ExploreRange />}

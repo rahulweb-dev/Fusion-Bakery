@@ -1,55 +1,57 @@
 'use client';
 import { useSelect } from '../context/SelectContext';
+import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-export default function Navbar() {
+export default function Navbar({ openCart }) {
   const [active, setActive] = useState('Home');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const { select, updateSelect } = useSelect();
+  const { cart } = useCart();
+  const { wishlist } = useWishlist();
 
-  // MENU FIXED — every item HAS href now
+  const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
+
+  // MENU LOGIC
   const menu = [
     { name: 'Home', href: '/' },
-
-    // About page = same href, only content changes in AboutPage
     { name: 'About', href: '/about' },
-
-    // Dynamic menu item
     select === 'Cloud Kitchen'
       ? { name: 'Food', href: '/food' }
       : { name: 'Products', href: '/products' },
-
     { name: 'Custom Orders', href: '/custom-orders' },
     { name: 'Customised Cake', href: '/custom-cake' },
     { name: 'Contact', href: '/contact' },
   ];
 
-  // Hide navbar on scroll
+  // Navbar Hide on Scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsVisible(window.scrollY <= lastScrollY);
       setLastScrollY(window.scrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
   return (
     <>
-      {/* NAVBAR WRAPPER */}
+      {/* NAVBAR */}
       <nav
         className={`fixed top-4 left-0 z-50 w-full flex justify-center px-3 sm:px-4 transition-all duration-300 ${
-          isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+          isVisible
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-full opacity-0'
         }`}
       >
         <div className='bg-white shadow-lg border border-gray-200 rounded-full backdrop-blur-md flex items-center w-full max-w-[1400px] py-3 px-5 md:px-8 lg:px-10'>
-
           {/* LOGO */}
           <Link href='/' className='shrink-0'>
             <Image
@@ -84,25 +86,42 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* RIGHT SIDE SELECT */}
-          <div className='hidden md:flex items-center gap-3 lg:gap-4 ml-auto'>
+          {/* RIGHT ICONS + SELECT */}
+          <div className='hidden md:flex items-center gap-4 ml-auto'>
+            {/* SELECT */}
             <div className='bg-[#6A1B9A] hover:bg-[#4A1070] text-white font-semibold rounded-xl shadow-md px-3 lg:px-5 py-2 transition whitespace-nowrap'>
               <select
                 value={select}
                 onChange={(e) => updateSelect(e.target.value)}
-                className='bg-transparent outline-none'
+                className='bg-transparent outline-none cursor-pointer'
               >
                 <option value='Chocolate'>Chocolate</option>
                 <option value='Cloud Kitchen'>Cloud Kitchen</option>
               </select>
             </div>
 
-            {/* SHOP BUTTON */}
+            {/* ❤️ WISHLIST */}
+            <Link href='/wishlist' className='relative text-xl cursor-pointer'>
+              ❤️
+              {wishlist.length > 0 && (
+                <span className='absolute -top-2 -right-2 text-[10px] bg-red-500 text-white px-1.5 rounded-full'>
+                  {wishlist.length}
+                </span>
+              )}
+            </Link>
+
+            {/* 🛍 CART */}
             <Link
-              href='/shop'
-              className='bg-[#B55328] hover:bg-[#9c431f] text-white rounded-xl font-semibold px-4 lg:px-6 py-2 transition flex items-center gap-2 whitespace-nowrap'
+              href='/cart'
+              onClick={openCart}
+              className='relative text-xl cursor-pointer'
             >
-              <span className='text-sm'>♡</span> Shop
+              🛍️
+              {cartCount > 0 && (
+                <span className='absolute -top-2 -right-2 text-[10px] bg-black text-white px-1.5 rounded-full'>
+                  {cartCount}
+                </span>
+              )}
             </Link>
           </div>
 
@@ -124,26 +143,30 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
           ></div>
 
-          <div className='fixed top-0 right-0 h-full w-[85%] sm:w-[60%] bg-white/95 shadow-xl backdrop-blur-xl border-l border-white/20 rounded-l-[40px] p-7 pt-14 z-50 animate-slideInPremium flex flex-col'>
-
+          <div className='fixed top-0 right-0 h-full w-[85%] sm:w-[60%] bg-white shadow-xl rounded-l-[40px] p-7 pt-14 z-50 animate-slideInPremium flex flex-col'>
             {/* HEADER */}
             <div className='flex items-center justify-between mb-10'>
-              <Image src='/images/logo.png' alt='Logo' width={120} height={50} />
+              <Image
+                src='/images/logo.png'
+                alt='Logo'
+                width={120}
+                height={50}
+              />
 
               <button
                 onClick={() => setMobileOpen(false)}
-                className='w-12 h-12 text-3xl bg-white/80 backdrop-blur-lg rounded-2xl border border-gray-200 shadow text-[#B55328]'
+                className='w-12 h-12 text-3xl bg-white/80 rounded-2xl border border-gray-200 shadow text-[#B55328]'
               >
                 ✕
               </button>
             </div>
 
             {/* MOBILE SELECT */}
-            <div className='block w-full py-4 mb-5 rounded-2xl bg-[#6A1B9A] hover:bg-[#4A1070] text-white shadow font-semibold text-lg text-center'>
+            <div className='block w-full py-4 mb-5 rounded-2xl bg-[#6A1B9A] hover:bg-[#4A1070] text-white text-lg text-center font-semibold'>
               <select
                 value={select}
                 onChange={(e) => updateSelect(e.target.value)}
-                className='bg-transparent outline-none text-center'
+                className='bg-transparent outline-none text-center cursor-pointer'
               >
                 <option value='Chocolate'>Chocolate</option>
                 <option value='Cloud Kitchen'>Cloud Kitchen</option>
@@ -168,14 +191,37 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* SHOP BUTTON */}
-            <Link
-              href='/shop'
-              onClick={() => setMobileOpen(false)}
-              className='block py-4 rounded-2xl bg-[#B55328] hover:bg-[#9c431f] text-white font-semibold text-lg shadow-lg text-center'
-            >
-              ♡ Shop Now
-            </Link>
+            {/* ❤️ + 🛍 ICONS IN MOBILE */}
+            <div className='flex items-center justify-center gap-7 text-2xl my-7'>
+              <Link
+                href='/wishlist'
+                onClick={() => setMobileOpen(false)}
+                className='relative'
+              >
+                ❤️
+                {wishlist.length > 0 && (
+                  <span className='absolute -top-2 -right-2 text-[10px] bg-red-500 text-white px-1.5 rounded-full'>
+                    {wishlist.length}
+                  </span>
+                )}
+              </Link>
+
+              <Link
+                href='/cart'
+                onClick={() => {
+                  setMobileOpen(false);
+                  openCart();
+                }}
+                className='relative'
+              >
+                🛍️
+                {cartCount > 0 && (
+                  <span className='absolute -top-2 -right-2 text-[10px] bg-black text-white px-1.5 rounded-full'>
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
+            </div>
           </div>
 
           {/* ANIMATIONS */}

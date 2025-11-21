@@ -8,6 +8,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.bakersdelight.com.au",
       },
+       {
+        protocol: "https",
+        hostname: "brandingwrap.com",
+      },
+      
     ],
   },
 };
