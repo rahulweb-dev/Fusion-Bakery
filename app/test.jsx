@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSelect } from '../context/SelectContext';
 
-export default function ModalSelect() {
+export default function ModalSelec() {
   const router = useRouter();
   const { updateSelect } = useSelect();
 
