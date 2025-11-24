@@ -11,27 +11,40 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
 
   // 🔄 Load saved selection (client-only)
   useEffect(() => {
-    if (typeof window === 'undefined') return; // ⬅️ FIX
+    if (typeof window === 'undefined') return; // SSR SAFE
 
     const saved = localStorage.getItem('selectedState');
 
     if (!saved) {
       setOpenSelectState(true);
-      document.body.style.overflow = 'hidden';
     } else {
       setSelectedState(saved);
       updateSelect(saved);
     }
-  }, [updateSelect]); // ⬅️ FIX remove setOpenSelectState
+  }, [updateSelect, setOpenSelectState]);
+
+  // 🚫 Lock scroll when modal open
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (openSelectState) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => (document.body.style.overflow = 'auto');
+  }, [openSelectState]);
 
   // 🖱 Option Click
   const handleClick = (option) => {
     setSelectedState(option);
     updateSelect(option);
-    localStorage.setItem('selectedState', option);
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('selectedState', option);
+    }
 
     setOpenSelectState(false);
-    document.body.style.overflow = 'auto';
   };
 
   // ❌ Prevent closing before selection
@@ -43,12 +56,10 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
         return;
       }
       setOpenSelectState(false);
-      document.body.style.overflow = 'auto';
     }
   };
 
   if (!openSelectState) return null;
-  document.body.style.overflow = 'hidden';
 
   return (
     <div
