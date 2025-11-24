@@ -3,15 +3,16 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useSelect } from '../context/SelectContext';
-import toast from 'react-hot-toast';
 
 export default function ModalSelect({ openSelectState, setOpenSelectState }) {
   const { updateSelect } = useSelect();
   const [shakeModal, setShakeModal] = useState(false);
   const [selectedState, setSelectedState] = useState('');
 
-  // FIRST TIME ONLY
+  // 🔄 Load saved selection (client-only)
   useEffect(() => {
+    if (typeof window === 'undefined') return; // ⬅️ FIX
+
     const saved = localStorage.getItem('selectedState');
 
     if (!saved) {
@@ -21,20 +22,19 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
       setSelectedState(saved);
       updateSelect(saved);
     }
-  }, [updateSelect, setOpenSelectState]);
+  }, [updateSelect]); // ⬅️ FIX remove setOpenSelectState
 
-  // SELECT CLICK
+  // 🖱 Option Click
   const handleClick = (option) => {
     setSelectedState(option);
     updateSelect(option);
     localStorage.setItem('selectedState', option);
-    toast.success(`${option} Selected! 🎉`);
 
     setOpenSelectState(false);
     document.body.style.overflow = 'auto';
   };
 
-  // BLOCK CLOSE WITHOUT SELECTING
+  // ❌ Prevent closing before selection
   const handleOnClose = (e) => {
     if (e.target.id === 'modal-container') {
       if (!selectedState) {
@@ -48,6 +48,7 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
   };
 
   if (!openSelectState) return null;
+  document.body.style.overflow = 'hidden';
 
   return (
     <div
@@ -59,13 +60,8 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
         className={`bg-white w-full max-w-2xl rounded-2xl py-6 px-4 m-3 shadow-2xl border border-white/30 animate-fadeUp 
         ${shakeModal ? 'animate-shake' : ''}`}
       >
-        <Image
-          src='/images/logo.png'
-          alt='logo'
-          width={300}
-          height={300}
-          className='w-auto h-24 sm:h-28 md:h-40 mx-auto mb-6'
-        />
+        <Image src='/images/logo.png' alt='logo' width={300} height={300}
+          className='w-auto h-24 sm:h-28 md:h-40 mx-auto mb-6' />
 
         <h2 className='text-center text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-4'>
           Choose Your Option
@@ -97,18 +93,6 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
           Tap an option above to continue
         </p>
       </div>
-
-      <style>{`
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px) scale(0.98);} to { opacity: 1; transform: translateY(0) scale(1);} }
-        @keyframes shake {
-          10%, 90% { transform: translateX(-2px); }
-          20%, 80% { transform: translateX(4px); }
-          30%, 50%, 70% { transform: translateX(-6px); }
-          40%, 60% { transform: translateX(6px); }
-        }
-        .animate-fadeUp { animation: fadeUp 0.25s ease-out forwards; }
-        .animate-shake { animation: shake 0.5s ease-in-out; }
-      `}</style>
     </div>
   );
 }
