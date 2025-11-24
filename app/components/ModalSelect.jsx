@@ -3,13 +3,14 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useSelect } from '../context/SelectContext';
+import toast from 'react-hot-toast';
 
 export default function ModalSelect({ openSelectState, setOpenSelectState }) {
   const { updateSelect } = useSelect();
   const [shakeModal, setShakeModal] = useState(false);
   const [selectedState, setSelectedState] = useState('');
 
-  // 🔄 Load saved selection and force popup on first visit
+  // FIRST TIME ONLY
   useEffect(() => {
     const saved = localStorage.getItem('selectedState');
 
@@ -22,17 +23,18 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
     }
   }, [updateSelect, setOpenSelectState]);
 
-  // 🖱 Option Click
+  // SELECT CLICK
   const handleClick = (option) => {
     setSelectedState(option);
     updateSelect(option);
-    localStorage.setItem('selectedState', option); // Persist selection
+    localStorage.setItem('selectedState', option);
+    toast.success(`${option} Selected! 🎉`);
 
     setOpenSelectState(false);
     document.body.style.overflow = 'auto';
   };
 
-  // ❌ Prevent closing before selection
+  // BLOCK CLOSE WITHOUT SELECTING
   const handleOnClose = (e) => {
     if (e.target.id === 'modal-container') {
       if (!selectedState) {
@@ -45,11 +47,7 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
     }
   };
 
-  // ❌ Don’t render if closed
   if (!openSelectState) return null;
-
-  // 🚫 Disable scrolling while open
-  document.body.style.overflow = 'hidden';
 
   return (
     <div
@@ -61,7 +59,6 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
         className={`bg-white w-full max-w-2xl rounded-2xl py-6 px-4 m-3 shadow-2xl border border-white/30 animate-fadeUp 
         ${shakeModal ? 'animate-shake' : ''}`}
       >
-        {/* Logo */}
         <Image
           src='/images/logo.png'
           alt='logo'
@@ -74,35 +71,22 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
           Choose Your Option
         </h2>
 
-        {/* Selectable Options */}
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4'>
-          {/* Corporate */}
           <div
             onClick={() => handleClick('Corporate-Gifting')}
             className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-full h-[160px] sm:h-[200px] group hover:scale-[1.03] transition-transform'
           >
-            <Image
-              src='/images/01.webp'
-              alt='Corporate Gifting'
-              fill
-              className='object-cover'
-            />
+            <Image src='/images/01.webp' alt='Corporate Gifting' fill className='object-cover' />
             <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-lg sm:text-xl md:text-2xl font-semibold'>
               Corporate Gifting
             </div>
           </div>
 
-          {/* Cloud Kitchen */}
           <div
             onClick={() => handleClick('Cloud Kitchen')}
             className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-full h-[160px] sm:h-[200px] group hover:scale-[1.03] transition-transform'
           >
-            <Image
-              src='/images/cloud_kitchen.png'
-              alt='Cloud Kitchen'
-              fill
-              className='object-cover'
-            />
+            <Image src='/images/cloud_kitchen.png' alt='Cloud Kitchen' fill className='object-cover' />
             <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-lg sm:text-xl md:text-2xl font-semibold'>
               Cloud Kitchen
             </div>
@@ -114,7 +98,6 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
         </p>
       </div>
 
-      {/* Animations */}
       <style>{`
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px) scale(0.98);} to { opacity: 1; transform: translateY(0) scale(1);} }
         @keyframes shake {
