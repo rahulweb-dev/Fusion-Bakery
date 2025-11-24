@@ -148,12 +148,10 @@ export default function Navbar() {
       </nav>
 
       {/* MODAL */}
-      {openSelectState && (
-        <ModalSelect
-          openSelectState={openSelectState}
-          setOpenSelectState={setOpenSelectState}
-        />
-      )}
+      <ModalSelect
+        openSelectState={openSelectState}
+        setOpenSelectState={setOpenSelectState}
+      />
 
       {/* BOTTOM NAV (Mobile Only) */}
       <div className='fixed bottom-0 left-0 w-full bg-[#FFF9F2] border-t border-[#E4D7C3] shadow-[0_-3px_10px_rgba(0,0,0,0.08)] z-[99] flex justify-around py-2 sm:py-2.5 md:hidden'>
