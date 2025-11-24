@@ -30,3 +30,10 @@ body {
 .trusted-swiper .swiper-wrapper {
   transition-timing-function: linear !important;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

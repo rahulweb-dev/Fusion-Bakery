@@ -1,46 +1,43 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useSelect } from '../context/SelectContext';
 
-export default function ModalSelect() {
-  const router = useRouter();
+export default function ModalSelect({ openSelectState, setOpenSelectState }) {
   const { updateSelect } = useSelect();
-
   const [shakeModal, setShakeModal] = useState(false);
-  const [error, setError] = useState('');
-  const [openSelectState, setOpenSelectState] = useState(false); // FIX 1
   const [selectedState, setSelectedState] = useState('');
-  const [loading, setLoading] = useState(true); // FIX 2 stops flashing
 
-  // Handle user click
+  // 🔄 Load saved selection and force popup on first visit
+  useEffect(() => {
+    const saved = localStorage.getItem('selectedState');
+
+    if (!saved) {
+      setOpenSelectState(true);
+      document.body.style.overflow = 'hidden';
+    } else {
+      setSelectedState(saved);
+      updateSelect(saved);
+    }
+  }, [updateSelect, setOpenSelectState]);
+
+  // 🖱 Option Click
   const handleClick = (option) => {
     setSelectedState(option);
-    setError('');
-
-    // Update context
     updateSelect(option);
+    localStorage.setItem('selectedState', option); // Persist selection
 
-    // Save in storage
-    sessionStorage.setItem('selectedState', option);
-    sessionStorage.setItem('modalShown', 'yes');
-
-    // Close modal
     setOpenSelectState(false);
     document.body.style.overflow = 'auto';
-
-    router.push('/');
   };
 
-  // Close when clicking outside
+  // ❌ Prevent closing before selection
   const handleOnClose = (e) => {
     if (e.target.id === 'modal-container') {
       if (!selectedState) {
-        setError('Please select an option');
         setShakeModal(true);
-        setTimeout(() => setShakeModal(false), 500);
+        setTimeout(() => setShakeModal(false), 600);
         return;
       }
       setOpenSelectState(false);
@@ -48,42 +45,21 @@ export default function ModalSelect() {
     }
   };
 
-  // FIX 3 – Decide visibility BEFORE rendering modal
-  useEffect(() => {
-    const shown = sessionStorage.getItem('modalShown');
-    const saved = sessionStorage.getItem('selectedState');
-
-    if (!shown) {
-      setOpenSelectState(true); // show only first time
-      document.body.style.overflow = 'hidden';
-    } else {
-      setOpenSelectState(false); // don't show again
-      document.body.style.overflow = 'auto';
-    }
-
-    if (saved) {
-      setSelectedState(saved);
-      updateSelect(saved);
-    }
-
-    setLoading(false); // allow modal render after check
-  }, [updateSelect]);
-
-  // FIX 4: Prevent flicker
-  if (loading) return null;
-
+  // ❌ Don’t render if closed
   if (!openSelectState) return null;
+
+  // 🚫 Disable scrolling while open
+  document.body.style.overflow = 'hidden';
 
   return (
     <div
       id='modal-container'
       onClick={handleOnClose}
-      className='fixed inset-0 flex items-center justify-center z-9999 backdrop-blur-md bg-black/60'
+      className='fixed inset-0 flex items-center justify-center z-[9999] backdrop-blur-md bg-black/60'
     >
       <div
-        className={`bg-white/90 w-full max-w-2xl rounded-2xl py-6 px-4 m-3 shadow-2xl border border-white/30 transition-all duration-200 ${
-          shakeModal ? 'animate-shake-modal' : ''
-        }`}
+        className={`bg-white w-full max-w-2xl rounded-2xl py-6 px-4 m-3 shadow-2xl border border-white/30 animate-fadeUp 
+        ${shakeModal ? 'animate-shake' : ''}`}
       >
         {/* Logo */}
         <Image
@@ -91,26 +67,27 @@ export default function ModalSelect() {
           alt='logo'
           width={300}
           height={300}
-          className='w-auto h-28 md:h-40 mx-auto mb-6'
+          className='w-auto h-24 sm:h-28 md:h-40 mx-auto mb-6'
         />
 
-        <h2 className='text-center text-xl md:text-2xl font-semibold text-gray-900 mb-4'>
+        <h2 className='text-center text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-4'>
           Choose Your Option
         </h2>
 
-        <div className='flex flex-col md:flex-row justify-center items-center gap-6 mb-4'>
-          {/* Chocolate */}
+        {/* Selectable Options */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4'>
+          {/* Corporate */}
           <div
-            onClick={() => handleClick('Chocolate')}
-            className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-[280px] h-[200px] group hover:scale-[1.03] transition-transform'
+            onClick={() => handleClick('Corporate-Gifting')}
+            className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-full h-[160px] sm:h-[200px] group hover:scale-[1.03] transition-transform'
           >
             <Image
               src='/images/01.webp'
-              alt='Chocolate'
+              alt='Corporate Gifting'
               fill
               className='object-cover'
             />
-            <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-3xl font-semibold'>
+            <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-lg sm:text-xl md:text-2xl font-semibold'>
               Corporate Gifting
             </div>
           </div>
@@ -118,7 +95,7 @@ export default function ModalSelect() {
           {/* Cloud Kitchen */}
           <div
             onClick={() => handleClick('Cloud Kitchen')}
-            className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-[280px] h-[200px] group hover:scale-[1.03] transition-transform'
+            className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-full h-[160px] sm:h-[200px] group hover:scale-[1.03] transition-transform'
           >
             <Image
               src='/images/cloud_kitchen.png'
@@ -126,22 +103,29 @@ export default function ModalSelect() {
               fill
               className='object-cover'
             />
-            <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-3xl font-semibold'>
+            <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-lg sm:text-xl md:text-2xl font-semibold'>
               Cloud Kitchen
             </div>
           </div>
         </div>
 
-        {error && (
-          <p className='text-center text-red-600 font-medium text-sm mb-2'>
-            {error}
-          </p>
-        )}
-
-        <p className='text-center text-gray-700 text-sm'>
-          Please select any option above to continue
+        <p className='text-center text-gray-700 text-xs sm:text-sm'>
+          Tap an option above to continue
         </p>
       </div>
+
+      {/* Animations */}
+      <style>{`
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px) scale(0.98);} to { opacity: 1; transform: translateY(0) scale(1);} }
+        @keyframes shake {
+          10%, 90% { transform: translateX(-2px); }
+          20%, 80% { transform: translateX(4px); }
+          30%, 50%, 70% { transform: translateX(-6px); }
+          40%, 60% { transform: translateX(6px); }
+        }
+        .animate-fadeUp { animation: fadeUp 0.25s ease-out forwards; }
+        .animate-shake { animation: shake 0.5s ease-in-out; }
+      `}</style>
     </div>
   );
 }

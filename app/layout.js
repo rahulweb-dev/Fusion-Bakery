@@ -6,6 +6,7 @@ import { SelectProvider } from './context/SelectContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { Toaster } from 'react-hot-toast';
+import BottomNav from './components/Navbar';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,8 +34,9 @@ export default function RootLayout({ children }) {
           <CartProvider>
             <WishlistProvider>
               <Navbar />
+
               <ModalSelect />
-              {children}
+              <div className='mt-40'>{children}</div>
             </WishlistProvider>
           </CartProvider>
         </SelectProvider>

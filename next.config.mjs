@@ -20,6 +20,15 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'corporategiftstkc.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'b.zmtcdn.com',
+      },
+        {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+    
     ],
   },
 };

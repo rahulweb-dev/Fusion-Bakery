@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import Link from 'next/link';
 
 export default function HeroSection() {
   const { addToCart } = useCart();
@@ -52,7 +53,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className='bg-white px-6 py-16 md:px-20 relative max-w-8xl'>
+    <section className='bg-white px-6 py-16 md:px-20 relative max-w-8xl mx-auto'>
       <div className='md:flex items-center justify-between mt-20 gap-12'>
         <div className='max-w-xl'>
           <h2 className='text-4xl md:text-5xl font-serif font-bold leading-tight text-gray-900'>
@@ -63,20 +64,29 @@ export default function HeroSection() {
             discounts. Grab offers up to 50% off this season!
           </p>
 
-          <button className='mt-8 px-7 py-3 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white rounded-xl text-lg font-medium hover:opacity-90 shadow-xl'>
-            Explore Products ✨
-          </button>
+          <Link href='/products'>
+          
+            <button className='mt-8 px-7 py-3 bg-linear-to-r from-yellow-600 to-yellow-800 text-white rounded-xl text-lg font-medium hover:opacity-90 shadow-xl'>
+              Explore Products ✨
+            </button>
+          </Link>
         </div>
 
         <div className='w-full md:w-[60%] relative'>
           <Swiper
-            slidesPerView={3}
             loop
             autoplay={{ delay: 2500 }}
             navigation={{ nextEl: '.next-btn', prevEl: '.prev-btn' }}
             modules={[Navigation, Autoplay]}
             spaceBetween={25}
             grabCursor
+            breakpoints={{
+              0: { slidesPerView: 1 }, // phones
+              480: { slidesPerView: 1 }, // small phones / large phones
+              640: { slidesPerView: 1 }, // tablets portrait
+              1024: { slidesPerView: 2 }, // desktop
+              1280: { slidesPerView: 3 }, // large screens
+            }}
           >
             {products.map((item, idx) => {
               const liked = wishlist.find((p) => p.title === item.title);

@@ -1,4 +1,6 @@
 'use client';
+import CrazyDeals from './cloudComponents/CrazyDeals';
+import CuisinesBrowse from './cloudComponents/CuisinesBrowse';
 import AboutSection from './components/About';
 import ContactSection from './components/ContactSection';
 import ExploreRange from './components/ExploreRange';
@@ -38,21 +40,45 @@ export default function Home() {
       buttonLink: '#products',
     },
   ];
+  const Cloudbanners = [
+    {
+      image:
+        'https://corporategiftstkc.com/cdn/shop/files/Diwali_Website_Banners_PC_1.png?v=1761810497&width=1800',
+      title: 'Gift It Once. Stay Remembered All Year.',
+      subtitle:
+        'Diaries, calendars & desk accessories that inspire productivity all year long',
+      buttonText: 'Explore Now',
+      buttonLink: '#products',
+    },
+    {
+      image:
+        'https://corporategiftstkc.com/cdn/shop/files/website-banner-2_2.jpg?v=1746699864&width=1800',
+      title: 'Gift It Once. Stay Remembered All Year.',
+      subtitle:
+        'Diaries, calendars & desk accessories that inspire productivity all year long',
+      buttonText: 'Explore Now',
+      buttonLink: '#products',
+    },
+  ];
   return (
     <>
       <Navbar />
       {/* {select === 'Cloud Kitchen' ? 'cloud' : <Hero />} */}
-      {select === 'Cloud Kitchen' ? 'cloud' : <Categories />}
-      {select === 'Cloud Kitchen' ? 'cloud' : <BannerSlider slides={banners} />}
+      {select === 'Cloud Kitchen' ? <CuisinesBrowse /> : <Categories />}
+      {select === 'Cloud Kitchen' ? (
+        <BannerSlider slides={Cloudbanners} />
+      ) : (
+        <BannerSlider slides={banners} />
+      )}
 
-      {select === 'Cloud Kitchen' ? 'cloud' : <HeroSection />}
-      {select === 'Cloud Kitchen' ? <AboutSection /> : <AboutCorporate />}
-      {select === 'Cloud Kitchen' ? <FreshServices /> : ''}
+      {select === 'Cloud Kitchen' ? <CrazyDeals /> : <HeroSection />}
+      {select === 'Cloud Kitchen' ? '' : <AboutCorporate />}
+      {/* {select === 'Cloud Kitchen' ? <FreshServices /> : ''} */}
       {/* {select === 'Cloud Kitchen' ? 'cloud' : <ExploreRange />} */}
 
       {/* {select === 'Cloud Kitchen' ? 'cloud' : <SweetStory />} */}
       {select === 'Cloud Kitchen' ? '' : <TrustedPartners />}
-      {select === 'Cloud Kitchen' ? 'cloud' : <GiftingSection />}
+      {select === 'Cloud Kitchen' ? '' : <GiftingSection />}
       {/* <ContactSection /> */}
       <TestimonialSection />
       <Footer />
