@@ -95,7 +95,7 @@ export default function Navbar({ openCart }) {
                 onChange={(e) => updateSelect(e.target.value)}
                 className='bg-transparent outline-none cursor-pointer'
               >
-                <option value='Chocolate'>Chocolate</option>
+                <option value='Corporate-Gifting'>Corporate-Gifting</option>
                 <option value='Cloud Kitchen'>Cloud Kitchen</option>
               </select>
             </div>

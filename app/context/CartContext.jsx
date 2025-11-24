@@ -6,43 +6,51 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
+  // Load from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("cartItems");
     if (saved) setCart(JSON.parse(saved));
   }, []);
 
+  // Save to localStorage
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product) => {
+  // ➕ Add To Cart (save slug + qty)
+  const addToCart = (product, qty = 1) => {
     setCart((prev) => {
-      const exist = prev.find((item) => item.title === product.title);
+      const exist = prev.find((item) => item.slug === product.slug);
       if (exist) {
         return prev.map((item) =>
-          item.title === product.title ? { ...item, qty: item.qty + 1 } : item
+          item.slug === product.slug
+            ? { ...item, qty: item.qty + qty }
+            : item
         );
       }
-      return [...prev, { ...product, qty: 1 }];
+      return [...prev, { ...product, qty }];
     });
   };
 
-  const removeFromCart = (title) => {
-    setCart((prev) => prev.filter((item) => item.title !== title));
+  // ❌ Remove from Cart
+  const removeFromCart = (slug) => {
+    setCart((prev) => prev.filter((item) => item.slug !== slug));
   };
 
-  const increaseQty = (title) => {
+  // ➕ Increase Qty
+  const increaseQty = (slug) => {
     setCart((prev) =>
       prev.map((item) =>
-        item.title === title ? { ...item, qty: item.qty + 1 } : item
+        item.slug === slug ? { ...item, qty: item.qty + 1 } : item
       )
     );
   };
 
-  const decreaseQty = (title) => {
+  // ➖ Decrease Qty
+  const decreaseQty = (slug) => {
     setCart((prev) =>
       prev.map((item) =>
-        item.title === title && item.qty > 1
+        item.slug === slug && item.qty > 1
           ? { ...item, qty: item.qty - 1 }
           : item
       )
@@ -51,7 +59,13 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, increaseQty, decreaseQty }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        increaseQty,
+        decreaseQty,
+      }}
     >
       {children}
     </CartContext.Provider>

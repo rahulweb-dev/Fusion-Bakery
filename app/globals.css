@@ -26,3 +26,7 @@ body {
 .animate-shake-modal {
   animation: modalShake 0.4s ease-in-out;
 }
+
+.trusted-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
