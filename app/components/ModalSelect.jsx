@@ -11,17 +11,23 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
 
   // 🔄 Load saved selection (client-only)
   useEffect(() => {
-    if (typeof window === 'undefined') return; // SSR SAFE
+    if (typeof window === 'undefined') return;
 
     const saved = localStorage.getItem('selectedState');
 
+    // Only show modal if no saved choice
     if (!saved) {
       setOpenSelectState(true);
-    } else {
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+
+    // Update selection on mount only
+    setTimeout(() => {
       setSelectedState(saved);
       updateSelect(saved);
-    }
-  }, [updateSelect, setOpenSelectState]);
+    }, 0);
+  }, [updateSelect]);
 
   // 🚫 Lock scroll when modal open
   useEffect(() => {
@@ -71,8 +77,13 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
         className={`bg-white w-full max-w-2xl rounded-2xl py-6 px-4 m-3 shadow-2xl border border-white/30 animate-fadeUp 
         ${shakeModal ? 'animate-shake' : ''}`}
       >
-        <Image src='/images/logo.png' alt='logo' width={300} height={300}
-          className='w-auto h-24 sm:h-28 md:h-40 mx-auto mb-6' />
+        <Image
+          src='/images/logo.png'
+          alt='logo'
+          width={300}
+          height={300}
+          className='w-auto h-24 sm:h-28 md:h-40 mx-auto mb-6'
+        />
 
         <h2 className='text-center text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-4'>
           Choose Your Option
@@ -83,7 +94,12 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
             onClick={() => handleClick('Corporate-Gifting')}
             className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-full h-[160px] sm:h-[200px] group hover:scale-[1.03] transition-transform'
           >
-            <Image src='/images/01.webp' alt='Corporate Gifting' fill className='object-cover' />
+            <Image
+              src='/images/01.webp'
+              alt='Corporate Gifting'
+              fill
+              className='object-cover'
+            />
             <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-lg sm:text-xl md:text-2xl font-semibold'>
               Corporate Gifting
             </div>
@@ -93,7 +109,12 @@ export default function ModalSelect({ openSelectState, setOpenSelectState }) {
             onClick={() => handleClick('Cloud Kitchen')}
             className='relative cursor-pointer rounded-xl overflow-hidden shadow-lg w-full h-[160px] sm:h-[200px] group hover:scale-[1.03] transition-transform'
           >
-            <Image src='/images/cloud_kitchen.png' alt='Cloud Kitchen' fill className='object-cover' />
+            <Image
+              src='/images/cloud_kitchen.png'
+              alt='Cloud Kitchen'
+              fill
+              className='object-cover'
+            />
             <div className='absolute inset-0 bg-black/40 group-hover:bg-black/20 flex justify-center items-center text-white text-lg sm:text-xl md:text-2xl font-semibold'>
               Cloud Kitchen
             </div>
