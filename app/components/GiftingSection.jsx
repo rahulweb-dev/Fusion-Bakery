@@ -88,7 +88,7 @@ export default function GiftingSection() {
             {/* LEFT IMAGE CARD */}
             <div className='relative w-[260px] sm:w-[300px] md:w-[340px] h-[400px] sm:h-[460px] md:h-[520px] overflow-hidden shadow-2xl  rounded-tl-[48px] rounded-tr-[48px] rounded-bl-[48px] rounded-br-2xl border border-white/40 backdrop-blur-md'>
               <Image
-                src='/giftbox.avif'
+                src='/images/01.webp'
                 alt='Gift'
                 fill
                 className='object-cover'

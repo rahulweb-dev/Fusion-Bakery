@@ -8,13 +8,22 @@ import 'swiper/css';
 
 // 👇 Logo Data
 const logos = [
-  'https://corporategiftstkc.com/cdn/shop/files/Untitled_design_12_48a6ffce-db0c-4f73-8baf-540c7c361389-removebg-preview_1_medium.png?v=1747042770',
-  'https://corporategiftstkc.com/cdn/shop/files/Untitled_design_12_48a6ffce-db0c-4f73-8baf-540c7c361389-removebg-preview_1_medium.png?v=1747042770',
-  'https://corporategiftstkc.com/cdn/shop/files/Untitled_design_12_48a6ffce-db0c-4f73-8baf-540c7c361389-removebg-preview_1_medium.png?v=1747042770',
-  'https://corporategiftstkc.com/cdn/shop/files/Untitled_design_12_48a6ffce-db0c-4f73-8baf-540c7c361389-removebg-preview_1_medium.png?v=1747042770',
-  'https://corporategiftstkc.com/cdn/shop/files/Untitled_design_12_48a6ffce-db0c-4f73-8baf-540c7c361389-removebg-preview_1_medium.png?v=1747042770',
-  'https://corporategiftstkc.com/cdn/shop/files/Untitled_design_12_48a6ffce-db0c-4f73-8baf-540c7c361389-removebg-preview_1_medium.png?v=1747042770',
-  'https://corporategiftstkc.com/cdn/shop/files/Untitled_design_12_48a6ffce-db0c-4f73-8baf-540c7c361389-removebg-preview_1_medium.png?v=1747042770',
+ 
+  '/clients_logos/avasa.png',
+  '/clients_logos/basis_reimaged.png',
+  '/clients_logos/cl_jewelry.png',
+  '/clients_logos/custom_aise.png',
+  '/clients_logos/Keus.png',
+  '/clients_logos/radha_toyota.png',
+  '/clients_logos/ram_k_group.png',
+  '/clients_logos/red.png',
+  '/clients_logos/sagar_cement.png',
+  '/clients_logos/sanskriti_pre_school.png',
+  '/clients_logos/SKYDE_SOLTIONS-removebg-preview-min.png',
+  '/clients_logos/the_shri_ram_aca.png',
+  '/clients_logos/the_shriram_university_school.png',
+  '/clients_logos/visual_hash_technology.png',
+  '/clients_logos/Vr.png',
 ];
 
 // 👇 CountUp Hook Inside Same File
