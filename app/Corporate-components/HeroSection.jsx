@@ -5,7 +5,6 @@ import { useWishlist } from '../context/WishlistContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import toast from 'react-hot-toast';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Link from 'next/link';
@@ -28,99 +27,86 @@ export default function HeroSection() {
       img: 'https://brandingwrap.com/wp-content/uploads/2023/04/45-in-1-pre-5-400x457.png',
     },
     {
-      title: 'Earings',
+      title: 'Earrings',
       price: 600,
       pastPrice: 950,
       img: 'https://brandingwrap.com/wp-content/uploads/2023/04/Gift-Sets-Images-Web-31-1.png',
     },
     {
-      title: 'Earings',
-      price: 600,
-      pastPrice: 950,
+      title: 'Bracelet',
+      price: 900,
+      pastPrice: 1400,
       img: 'https://brandingwrap.com/wp-content/uploads/2023/04/Gift-Sets-Images-Web-31-1.png',
     },
   ];
 
-  // Like Handler + Toast
   const likeProduct = (item) => {
     toggleWishlist(item);
     const exists = wishlist.find((p) => p.title === item.title);
-    if (exists) {
-      toast.error('Removed from Wishlist ❌');
-    } else {
-      toast.success('Added to Wishlist ❤️');
-    }
+    exists ? toast.error('Removed from Wishlist ❌') : toast.success('Added to Wishlist ❤️');
   };
 
   return (
-    <section className='bg-white px-6 py-16 md:px-20 relative max-w-8xl mx-auto'>
-      <div className='md:flex items-center justify-between mt-20 gap-12'>
-        <div className='max-w-xl'>
-          <h2 className='text-4xl md:text-5xl font-serif font-bold leading-tight text-gray-900'>
-            Bigger Smiles, Smaller <br /> Prices
+    <section className="bg-white px-5 sm:px-10 lg:px-20 py-14 lg:py-24 max-w-[1400px] mx-auto">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+
+        {/* Left Text Content */}
+        <div className="max-w-xl text-center md:text-left">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-gray-900 leading-tight">
+            Bigger Smiles, <br /> Smaller Prices ✨
           </h2>
-          <p className='mt-6 text-gray-600 text-[16px] leading-relaxed'>
-            Celebrate every occasion with unique collections at amazing
-            discounts. Grab offers up to 50% off this season!
+          <p className="mt-4 text-gray-600 text-[15px] sm:text-[16px] leading-relaxed px-2 md:px-0">
+            Celebrate every occasion with unique collections at amazing offers. Grab up to 50% discounts!
           </p>
 
-          <Link href='/products'>
-          
-            <button className='mt-8 px-7 py-3 bg-linear-to-r from-yellow-600 to-yellow-800 text-white rounded-xl text-lg font-medium hover:opacity-90 shadow-xl'>
+          <Link href="/products">
+            <button className="mt-7 sm:mt-8 px-6 sm:px-8 py-3 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white rounded-lg sm:rounded-xl text-sm sm:text-lg font-medium hover:opacity-90 shadow-lg hover:shadow-xl transition">
               Explore Products ✨
             </button>
           </Link>
         </div>
 
-        <div className='w-full md:w-[60%] relative'>
+        {/* Swiper Slider */}
+        <div className="w-full md:w-[60%] relative">
           <Swiper
             loop
-            autoplay={{ delay: 2500 }}
+            autoplay={{ delay: 2200 }}
             navigation={{ nextEl: '.next-btn', prevEl: '.prev-btn' }}
             modules={[Navigation, Autoplay]}
-            spaceBetween={25}
+            spaceBetween={20}
             grabCursor
             breakpoints={{
-              0: { slidesPerView: 1 }, // phones
-              480: { slidesPerView: 1 }, // small phones / large phones
-              640: { slidesPerView: 1 }, // tablets portrait
-              1024: { slidesPerView: 2 }, // desktop
-              1280: { slidesPerView: 3 }, // large screens
+              0: { slidesPerView: 1.1 }, // phones
+              480: { slidesPerView: 1.3 },
+              640: { slidesPerView: 1.6 }, 
+              768: { slidesPerView: 2 },
+              1280: { slidesPerView: 3 },
             }}
+            className="pb-10"
           >
             {products.map((item, idx) => {
               const liked = wishlist.find((p) => p.title === item.title);
               return (
                 <SwiperSlide key={idx}>
-                  <div className='relative bg-white rounded-3xl shadow-xl p-5 border border-gray-200 hover:border-yellow-600 hover:shadow-2xl transition-all duration-300'>
-                    {/* ❤️ LIKE BUTTON */}
+                  <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl border border-gray-200 hover:border-yellow-600 p-4 sm:p-5 transition-all duration-300">
                     <button
                       onClick={() => likeProduct(item)}
-                      className='absolute top-3 right-3 text-lg'
+                      className="absolute top-3 right-3 text-xl sm:text-2xl"
                     >
                       {liked ? '❤️' : '🤍'}
                     </button>
 
-                    <p className='text-sm text-gray-500 tracking-widest font-light'>
-                      CATEGORIES
-                    </p>
-                    <h3 className='text-xl font-serif font-bold mt-1 text-gray-900'>
-                      {item.title}
-                    </h3>
+                    <p className="text-[11px] sm:text-xs text-gray-500 tracking-widest font-light">CATEGORY</p>
+                    <h3 className="text-lg sm:text-xl font-serif font-bold mt-1 text-gray-900">{item.title}</h3>
 
-                    <div className='relative w-full h-[150px] mx-auto mt-4 mb-5'>
-                      <Image
-                        src={item.img}
-                        alt={item.title}
-                        fill
-                        className='object-contain'
-                      />
+                    <div className="relative w-full h-[130px] sm:h-[160px] mx-auto mt-3 mb-5">
+                      <Image src={item.img} alt={item.title} fill className="object-contain" />
                     </div>
 
-                    <div className='flex justify-between items-center'>
-                      <p className='text-lg font-bold text-gray-900'>
+                    <div className="flex justify-between items-center">
+                      <p className="text-[15px] sm:text-lg font-bold text-gray-900">
                         ₹{item.price}
-                        <span className='line-through text-gray-400 text-sm ml-2'>
+                        <span className="line-through text-gray-400 text-xs sm:text-sm ml-2">
                           ₹{item.pastPrice}
                         </span>
                       </p>
@@ -130,11 +116,12 @@ export default function HeroSection() {
                           addToCart(item);
                           toast.success('Added to Cart 🛒');
                         }}
-                        className='px-4 py-2 bg-black text-white rounded-full text-sm hover:bg-gray-800 transition'
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black text-white rounded-full text-[11px] sm:text-sm hover:bg-gray-800 transition"
                       >
                         Add To Cart 🛒
                       </button>
                     </div>
+
                   </div>
                 </SwiperSlide>
               );
@@ -142,11 +129,11 @@ export default function HeroSection() {
           </Swiper>
 
           {/* Navigation Buttons */}
-          <button className='prev-btn absolute -left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex justify-center items-center z-30 bg-gradient-to-b from-yellow-500 to-yellow-700 text-white border border-yellow-800 rounded-full shadow-lg hover:scale-110 transition'>
+          <button className="prev-btn absolute left-[-5px] sm:left-[-18px] top-[45%] -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 flex justify-center items-center z-30 bg-gradient-to-b from-yellow-500 to-yellow-700 text-white border border-yellow-800 rounded-full shadow-lg hover:scale-110 transition">
             ❮
           </button>
 
-          <button className='next-btn absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex justify-center items-center z-30 bg-gradient-to-b from-yellow-500 to-yellow-700 text-white border border-yellow-800 rounded-full shadow-lg hover:scale-110 transition'>
+          <button className="next-btn absolute right-[-5px] sm:right-[-18px] top-[45%] -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 flex justify-center items-center z-30 bg-gradient-to-b from-yellow-500 to-yellow-700 text-white border border-yellow-800 rounded-full shadow-lg hover:scale-110 transition">
             ❯
           </button>
         </div>

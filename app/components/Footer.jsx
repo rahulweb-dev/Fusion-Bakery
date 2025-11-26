@@ -5,42 +5,21 @@ import { FaInstagram, FaFacebookF, FaYoutube, FaTiktok } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className='relative overflow-hidden'>
-      {/* Background (Creamy Texture) */}
-      <div className='absolute inset-0 bg-[#F2AE84]'></div>
+    <footer className="relative overflow-hidden bg-[#E6C7A4] text-[#3B2416] font-[Inter]">
+      {/* Soft lights */}
+      <div className="absolute -top-10 left-10 w-36 h-36 bg-[#A77452]/20 blur-[90px] rounded-full"></div>
+      <div className="absolute -bottom-10 right-14 w-40 h-40 bg-[#C18A62]/20 blur-[110px] rounded-full"></div>
 
-      {/* Soft Cookie Shadows */}
-      <div className='absolute top-[-10%] left-[10%] w-[260px] h-[260px] bg-[#CFA574]/10 blur-[150px] rounded-full'></div>
-      <div className='absolute bottom-[-15%] right-[15%] w-[320px] h-80 bg-[#B8834A]/10 blur-[160px] rounded-full'></div>
+      <div className="relative z-10 max-w-[1200px] mx-auto px-5 lg:px-10 py-10">
 
-      {/* Content */}
-      <div className='relative z-10 pt-20 pb-14 text-[#4C2A1A]'>
-        {/* Logo + CTA */}
-        <div className='container mx-auto px-6 lg:px-12 text-center mb-16'>
-          <Image
-            src='/images/logo.png'
-            alt='Fusion Bakery Logo'
-            width={160}
-            height={80}
-            className='mx-auto mb-6'
-          />
-
-          <Link
-            href='/bulk-orders'
-            className='inline-block bg-[#4C2A1A] hover:bg-[#3a2015] transition-all text-white text-lg font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg'
-          >
-            🍪 Bulk Orders & Corporate Hampers →
-          </Link>
-        </div>
-
-        {/* Footer Columns */}
-        <div className='container mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-12'>
+        {/* Links */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {[
             {
               title: 'Company',
               links: [
-                ['Careers', '/careers'],
                 ['About Us', '/about'],
+                ['Careers', '/careers'],
                 ['Blogs & News', '/blog'],
                 ['Community', '/community'],
               ],
@@ -65,21 +44,17 @@ export default function Footer() {
               ],
             },
           ].map((col, i) => (
-            <div
-              key={i}
-              className='bg-[#ffffff] border border-[#E4D7C3] shadow-[0_4px_12px_rgba(0,0,0,0.05)] rounded-2xl p-6 hover:shadow-[0_6px_16px_rgba(0,0,0,0.1)] transition-all'
-            >
-              <h3 className='font-bold text-2xl mb-4 text-[#4C2A1A]'>
-                {col.title}
-              </h3>
-              <ul className='space-y-3 text-[#5B3A29] text-lg'>
-                {col.links.map(([name, href]) => (
-                  <li key={name}>
+            <div key={i}>
+              <h3 className="font-bold text-[19px] mb-3 tracking-wide">{col.title}</h3>
+
+              <ul className="space-y-[6px] text-[15px]">
+                {col.links.map(([label, href]) => (
+                  <li key={label}>
                     <Link
                       href={href}
-                      className='hover:text-[#AD6B35] transition-colors'
+                      className="hover:text-[#8B5B3E] transition-colors"
                     >
-                      {name}
+                      {label}
                     </Link>
                   </li>
                 ))}
@@ -88,18 +63,18 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Social Icons */}
-        <div className='container mx-auto px-6 lg:px-12 mt-16 text-center'>
-          <p className='text-lg font-medium mb-4 text-[#5B3A29]'>
-            Follow us for sweet treats & updates 
+        {/* Social Media */}
+        <div className="text-center mb-8">
+          <p className="text-[15px] font-medium mb-2">
+            Follow us for sweet treats & updates
           </p>
 
-          <div className='flex justify-center gap-8 text-3xl text-[#4C2A1A]'>
+          <div className="flex justify-center gap-6 text-[20px]">
             {[FaInstagram, FaFacebookF, FaYoutube, FaTiktok].map((Icon, i) => (
               <Link
+                href="#"
                 key={i}
-                href='#'
-                className='hover:text-[#AD6B35] transition-colors hover:scale-110'
+                className="hover:text-[#8B5B3E] hover:scale-105 transition-all"
               >
                 <Icon />
               </Link>
@@ -107,26 +82,24 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className='border-t border-[#E4D7C3] mt-14'></div>
-
-        <div className='container mx-auto px-6 lg:px-12 mt-8 flex flex-wrap gap-6 text-[#6B4A3A] text-[15px]'>
+        {/* Bottom Bar */}
+        <div className="border-t border-[#C5A482] pt-5 flex flex-wrap gap-4 text-[13.5px] text-[#4B3220]">
           {[
             ['Sitemap', '/sitemap'],
             ['Privacy Policy', '/privacy-policy'],
             ['Terms & Conditions', '/terms'],
             ['Promotional Policies', '/promotions'],
-          ].map(([name, link]) => (
+          ].map(([label, href]) => (
             <Link
-              key={name}
-              href={link}
-              className='hover:text-[#AD6B35] transition-colors'
+              key={label}
+              href={href}
+              className="hover:text-[#8B5B3E] transition-colors"
             >
-              {name}
+              {label}
             </Link>
           ))}
 
-          <span className='ml-auto'>© Fusion {new Date().getFullYear()}</span>
+          <span className="ml-auto">© Fusion {new Date().getFullYear()}</span>
         </div>
       </div>
     </footer>

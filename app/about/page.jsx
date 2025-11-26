@@ -2,7 +2,7 @@
 import { useSelect } from '../context/SelectContext';
 
 import CloudKitchen from '../components/About/cloudKitchen';
-import AboutChocolates from '../components/About/AboutChocolates';
+import AboutChocolates from '../components/About/AboutCorporate-gifts';
 
 export default function AboutPage() {
   const { select } = useSelect();

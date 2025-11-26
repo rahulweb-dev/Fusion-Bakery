@@ -1,18 +1,18 @@
 'use client';
 import CrazyDeals from './cloudComponents/CrazyDeals';
 import CuisinesBrowse from './cloudComponents/CuisinesBrowse';
-import AboutSection from './components/About';
-import ContactSection from './components/ContactSection';
-import ExploreRange from './components/ExploreRange';
+import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
-import FreshServices from './components/FreshServices';
 import GiftingSection from './components/GiftingSection';
-import Hero from './components/Hero';
+
 import Navbar from './components/Navbar';
-import SweetStory from './components/SweetStory';
 import TestimonialSection from './components/TestimonialSection';
 import { useSelect } from './context/SelectContext';
+import BeforeAfterBranding from './Corporate-components/BeforeAfterBranding';
+import ExploreProducts from './Corporate-components/Explore';
+import GiftCategories from './Corporate-components/GiftCategories';
 import HeroSection from './Corporate-components/HeroSection';
+import TrendingItems from './Corporate-components/TrendingItems';
 import AboutCorporate from './corporateComponents/AboutSection';
 import BannerSlider from './corporateComponents/BannerSlider';
 import Categories from './corporateComponents/Categories';
@@ -70,17 +70,15 @@ export default function Home() {
       ) : (
         <BannerSlider slides={banners} />
       )}
-
-      {select === 'Cloud Kitchen' ? <CrazyDeals /> : <HeroSection />}
+      {select === 'Cloud Kitchen' ? <CrazyDeals /> : <HeroSection />}{' '}
+      {select === 'Cloud Kitchen' ? '' : <TrendingItems />}{' '}
+      {select === 'Cloud Kitchen' ? '' : <BeforeAfterBranding />}
       {select === 'Cloud Kitchen' ? '' : <AboutCorporate />}
-      {/* {select === 'Cloud Kitchen' ? <FreshServices /> : ''} */}
-      {/* {select === 'Cloud Kitchen' ? 'cloud' : <ExploreRange />} */}
-
-      {/* {select === 'Cloud Kitchen' ? 'cloud' : <SweetStory />} */}
-      {select === 'Cloud Kitchen' ? '' : <TrustedPartners />}
       {select === 'Cloud Kitchen' ? '' : <GiftingSection />}
-      {/* <ContactSection /> */}
-      <TestimonialSection />
+      {/* <ContactSection /> */}{' '}
+      {select === 'Cloud Kitchen' ? '' : <TrustedPartners />}
+      <TestimonialSection />{' '}
+      {select === 'Cloud Kitchen' ? 'cloud' : <FAQSection />}
       <Footer />
     </>
   );
