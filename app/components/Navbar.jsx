@@ -8,7 +8,7 @@ import { useWishlist } from '../context/WishlistContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-
+import { forceModalOpen } from "../components/ModalSelect";
 const ModalSelect = dynamic(() => import('./ModalSelect'), { ssr: false });
 
 export default function Navbar() {
@@ -68,8 +68,8 @@ export default function Navbar() {
       {/* TOP NAV */}
       <nav
         className={`fixed top-4 left-0 z-[100] w-full flex justify-center px-2 sm:px-4 transition-all duration-300 ${isVisible
-            ? 'translate-y-0 opacity-100'
-            : '-translate-y-full opacity-0'
+          ? 'translate-y-0 opacity-100'
+          : '-translate-y-full opacity-0'
           }`}
       >
         <div className='bg-white shadow-xl border border-gray-200 rounded-full backdrop-blur-md flex items-center w-full max-w-[1350px] py-2.5 sm:py-3 px-4 sm:px-6 md:px-8 lg:px-10'>
@@ -91,8 +91,8 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   className={`${isActive(item.href)
-                      ? 'text-[#B55328] font-semibold'
-                      : 'hover:text-[#B55328]'
+                    ? 'text-[#B55328] font-semibold'
+                    : 'hover:text-[#B55328]'
                     } transition`}
                 >
                   {item.name}
@@ -108,7 +108,7 @@ export default function Navbar() {
           <div className='ml-auto flex items-center gap-2 sm:gap-3 md:gap-4'>
             {/* SELECT MODAL BUTTON */}
             <button
-              onClick={() => setOpenSelectState(true)}
+              onClick={forceModalOpen}
               className="bg-[#4C2A1A] text-white font-semibold rounded-xl shadow px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-[13px] md:text-[15px] flex items-center gap-1 sm:gap-2 whitespace-nowrap hover:bg-[#331a10] transition"
             >
               {/* ICON */}
@@ -122,6 +122,7 @@ export default function Navbar() {
               {/* DROPDOWN ARROW */}
               <span className="text-[9px] sm:text-[11px] md:text-[12px] opacity-90">▼</span>
             </button>
+
 
 
             {/* WISHLIST */}
@@ -174,8 +175,8 @@ export default function Navbar() {
         <Link
           href={select === 'Cloud Kitchen' ? '/food' : '/products'}
           className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${isActive(select === 'Cloud Kitchen' ? '/food' : '/products')
-              ? 'active-tab'
-              : 'text-[#000000a3]'
+            ? 'active-tab'
+            : 'text-[#000000a3]'
             }`}
         >
           <span className='text-[22px] xs:text-[24px]'>

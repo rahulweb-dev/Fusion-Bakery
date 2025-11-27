@@ -3,51 +3,66 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useSelect } from '../context/SelectContext';
 
-export default function ModalSelect(props) {
+let alreadyHandled = false; // 👈 Fix Strict Mode double trigger
+
+export default function ModalSelect() {
   const { updateSelect } = useSelect();
+
   const [shakeModal, setShakeModal] = useState(false);
   const [selectedState, setSelectedState] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [openSelectState, setOpenSelectState] = useState(false);
 
-  const open = props?.openSelectState;
-  const closeModal = props?.setOpenSelectState;
-
-  // 🧠 Show popup only once per visit
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const saved = localStorage.getItem('selectedState');
-    if (saved) {
-      setSelectedState(saved);
-      updateSelect(saved);
-      closeModal?.(false);
-    } else {
-      closeModal?.(true);
-    }
-  }, [updateSelect, closeModal]);
+    // 🚫 If already executed once (strict mode double render)
+    if (alreadyHandled) return;
+    alreadyHandled = true;
 
-  // 🖱 Click handler to select an option
+    const saved = localStorage.getItem('selectedState');
+    const modalShown = sessionStorage.getItem('modalShown');
+
+    if (modalShown && saved) {
+      updateSelect(saved);
+      document.body.style.overflow = 'auto';
+      return;
+    }
+
+    if (!saved) {
+      setOpenSelectState(true);
+      document.body.style.overflow = 'hidden';
+    } else {
+      updateSelect(saved);
+      document.body.style.overflow = 'auto';
+    }
+  }, []);
+
   const handleClick = (option) => {
     setSelectedState(option);
     updateSelect(option);
+
     localStorage.setItem('selectedState', option);
-    closeModal?.(false);
+    sessionStorage.setItem('modalShown', 'yes');
+
+    setOpenSelectState(false);
     document.body.style.overflow = 'auto';
   };
 
-  // ❌ Prevent closing without selection
   const handleBGClick = (e) => {
-    if (e.target.id === 'modal-container' && !selectedState) {
+    if (e.target.id !== 'modal-container') return;
+
+    if (!selectedState) {
       setShakeModal(true);
       setErrorMsg('⚠️ Please select an option to continue');
       setTimeout(() => setShakeModal(false), 600);
-    } else if (e.target.id === 'modal-container') {
-      closeModal?.(false);
-      document.body.style.overflow = 'auto';
+      return;
     }
+    setOpenSelectState(false);
+    document.body.style.overflow = 'auto';
   };
 
-  if (!open) return null;
+  if (!openSelectState) return null;
   document.body.style.overflow = 'hidden';
 
   return (
@@ -57,8 +72,9 @@ export default function ModalSelect(props) {
       onClick={handleBGClick}
     >
       <div
-        className={`bg-white w-full max-w-2xl rounded-2xl py-6 px-4 m-3 shadow-2xl border border-white/30 animate-fadeUp ${shakeModal ? 'animate-shake' : ''
-          }`}
+        className={`bg-white w-full max-w-2xl rounded-2xl py-6 px-4 m-3 shadow-2xl border border-white/30 animate-fadeUp ${
+          shakeModal ? 'animate-shake' : ''
+        }`}
       >
         <Image
           src="/images/logo.png"
@@ -94,11 +110,8 @@ export default function ModalSelect(props) {
           </div>
         </div>
 
-        {/* ⚠️ Error Message */}
         {errorMsg && (
-          <p className="text-center text-red-600 text-sm font-medium animate-pulse">
-            {errorMsg}
-          </p>
+          <p className="text-center text-red-600 text-sm font-medium animate-pulse">{errorMsg}</p>
         )}
 
         <p className="text-center text-gray-700 text-xs sm:text-sm mt-2">
@@ -107,4 +120,11 @@ export default function ModalSelect(props) {
       </div>
     </div>
   );
+}
+
+export function forceModalOpen() {
+  localStorage.removeItem('selectedState');
+  sessionStorage.removeItem('modalShown');
+  alreadyHandled = false; // 👈 allow reopen cleanly
+  window.location.reload();
 }
