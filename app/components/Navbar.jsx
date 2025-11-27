@@ -67,11 +67,10 @@ export default function Navbar() {
     <>
       {/* TOP NAV */}
       <nav
-        className={`fixed top-4 left-0 z-[100] w-full flex justify-center px-2 sm:px-4 transition-all duration-300 ${
-          isVisible
+        className={`fixed top-4 left-0 z-[100] w-full flex justify-center px-2 sm:px-4 transition-all duration-300 ${isVisible
             ? 'translate-y-0 opacity-100'
             : '-translate-y-full opacity-0'
-        }`}
+          }`}
       >
         <div className='bg-white shadow-xl border border-gray-200 rounded-full backdrop-blur-md flex items-center w-full max-w-[1350px] py-2.5 sm:py-3 px-4 sm:px-6 md:px-8 lg:px-10'>
           {/* LOGO */}
@@ -91,11 +90,10 @@ export default function Navbar() {
               <li key={item.name} className='relative'>
                 <Link
                   href={item.href}
-                  className={`${
-                    isActive(item.href)
+                  className={`${isActive(item.href)
                       ? 'text-[#B55328] font-semibold'
                       : 'hover:text-[#B55328]'
-                  } transition`}
+                    } transition`}
                 >
                   {item.name}
                 </Link>
@@ -111,12 +109,20 @@ export default function Navbar() {
             {/* SELECT MODAL BUTTON */}
             <button
               onClick={() => setOpenSelectState(true)}
-              className='bg-[#4C2A1A] text-white font-semibold rounded-xl shadow px-3 py-1 sm:px-4 sm:py-1.5 text-[11px] sm:text-[13px] md:text-[15px] whitespace-nowrap hover:bg-[#331a10]'
+              className="bg-[#4C2A1A] text-white font-semibold rounded-xl shadow px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-[13px] md:text-[15px] flex items-center gap-1 sm:gap-2 whitespace-nowrap hover:bg-[#331a10] transition"
             >
-              {select === 'Cloud Kitchen'
-                ? '🍽️ Cloud Kitchen'
-                : '🎁 Corporate Gifting'}
+              {/* ICON */}
+              <span className="text-[13px] sm:text-[16px]">
+                {select === "Cloud Kitchen" ? "🍽️" : "🎁"}
+              </span>
+
+              {/* TEXT */}
+              {select === "Cloud Kitchen" ? "Cloud Kitchen" : "Corporate Gifting"}
+
+              {/* DROPDOWN ARROW */}
+              <span className="text-[9px] sm:text-[11px] md:text-[12px] opacity-90">▼</span>
             </button>
+
 
             {/* WISHLIST */}
             <Link
@@ -159,20 +165,18 @@ export default function Navbar() {
 
         <Link
           href='/'
-          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${
-            isActive('/') ? 'active-tab' : 'text-[#000000a3]'
-          }`}
+          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${isActive('/') ? 'active-tab' : 'text-[#000000a3]'
+            }`}
         >
           <span className='text-[22px] xs:text-[24px]'>🏠</span> Home
         </Link>
 
         <Link
           href={select === 'Cloud Kitchen' ? '/food' : '/products'}
-          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${
-            isActive(select === 'Cloud Kitchen' ? '/food' : '/products')
+          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${isActive(select === 'Cloud Kitchen' ? '/food' : '/products')
               ? 'active-tab'
               : 'text-[#000000a3]'
-          }`}
+            }`}
         >
           <span className='text-[22px] xs:text-[24px]'>
             {select === 'Cloud Kitchen' ? '🍽️' : '🧁'}
@@ -182,20 +186,18 @@ export default function Navbar() {
 
         <Link
           href='/wishlist'
-          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${
-            isActive('/wishlist') ? 'active-tab' : 'text-[#000000a3]'
-          }`}
+          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${isActive('/wishlist') ? 'active-tab' : 'text-[#000000a3]'
+            }`}
         >
           <span className='text-[22px] xs:text-[24px]'>🤍</span> Wishlist
         </Link>
 
         <Link
-          href='/profile'
-          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${
-            isActive('/profile') ? 'active-tab' : 'text-[#000000a3]'
-          }`}
+          href='/contact'
+          className={`flex flex-col items-center text-[12px] xs:text-[13px] transition-all ${isActive('/contact') ? 'active-tab' : 'text-[#000000a3]'
+            }`}
         >
-          <span className='text-[22px] xs:text-[24px]'>👤</span> Profile
+          <span className='text-[22px] xs:text-[24px]'>👤</span> Contact-us
         </Link>
       </div>
     </>

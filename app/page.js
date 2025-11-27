@@ -1,16 +1,18 @@
 'use client';
+import ComboMealBoxes from './cloudComponents/ComboMealBoxes';
 import CrazyDeals from './cloudComponents/CrazyDeals';
 import CuisinesBrowse from './cloudComponents/CuisinesBrowse';
+import FoodAds from './cloudComponents/FoodAds';
+import KitchenInsights from './cloudComponents/kitchen-insights';
+import WhyChooseUs from './cloudComponents/WhyChooseUs';
 import FAQSection from './components/FAQSection';
-import Footer from './components/Footer';
 import GiftingSection from './components/GiftingSection';
 
 import Navbar from './components/Navbar';
 import TestimonialSection from './components/TestimonialSection';
 import { useSelect } from './context/SelectContext';
 import BeforeAfterBranding from './Corporate-components/BeforeAfterBranding';
-import ExploreProducts from './Corporate-components/Explore';
-import GiftCategories from './Corporate-components/GiftCategories';
+
 import HeroSection from './Corporate-components/HeroSection';
 import TrendingItems from './Corporate-components/TrendingItems';
 import AboutCorporate from './corporateComponents/AboutSection';
@@ -71,15 +73,15 @@ export default function Home() {
         <BannerSlider slides={banners} />
       )}
       {select === 'Cloud Kitchen' ? <CrazyDeals /> : <HeroSection />}{' '}
-      {select === 'Cloud Kitchen' ? '' : <TrendingItems />}{' '}
-      {select === 'Cloud Kitchen' ? '' : <BeforeAfterBranding />}
-      {select === 'Cloud Kitchen' ? '' : <AboutCorporate />}
-      {select === 'Cloud Kitchen' ? '' : <GiftingSection />}
+      {select === 'Cloud Kitchen' ? <FoodAds /> : <TrendingItems />}{' '}
+      {select === 'Cloud Kitchen' ? <WhyChooseUs /> : <BeforeAfterBranding />}
+      {select === 'Cloud Kitchen' ? <ComboMealBoxes /> : <AboutCorporate />}
+      {select === 'Cloud Kitchen' ? <KitchenInsights /> : <GiftingSection />}
       {/* <ContactSection /> */}{' '}
       {select === 'Cloud Kitchen' ? '' : <TrustedPartners />}
       <TestimonialSection />{' '}
-      {select === 'Cloud Kitchen' ? 'cloud' : <FAQSection />}
-      <Footer />
+      {select === 'Cloud Kitchen' ? <FAQSection /> : <FAQSection />}
+  
     </>
   );
 }

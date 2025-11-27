@@ -27,3 +27,5 @@ export default function Item({ image, name, new_price, old_price }) {
     </div>
   );
 }
+
+

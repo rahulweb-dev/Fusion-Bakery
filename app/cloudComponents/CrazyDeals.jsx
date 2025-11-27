@@ -1,156 +1,70 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import Item from "../Corporate-components/Item";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function CrazyDeals() {
   const deals = [
-    {
-      name: 'Egg Bhurji Gravy',
-      restaurant: 'Dayal Da Dhaba',
-      rating: 4.3,
-      time: '34 min',
-      price: 30,
-      oldPrice: 150,
-      off: '80% OFF',
-      img: '/food/egg.png',
-    },
-    {
-      name: 'Palak Paneer',
-      restaurant: 'Dayal Da Dhaba',
-      rating: 4.5,
-      time: '34 min',
-      price: 30,
-      oldPrice: 150,
-      off: '80% OFF',
-      img: '/food/palak.png',
-    },
-    {
-      name: 'South Indian Filter Coffee',
-      restaurant: 'Zimero Ice Creams',
-      rating: 4.1,
-      time: '43 min',
-      price: 52,
-      oldPrice: 172,
-      off: '70% OFF',
-      img: '/food/coffee.png',
-    },
-    {
-      name: 'Egg Curry',
-      restaurant: 'Delhi Darbar Dhaba',
-      rating: 4.0,
-      time: '37 min',
-      price: 50,
-      oldPrice: 150,
-      off: '67% OFF',
-      img: '/food/eggcurry.png',
-    },
-    {
-      name: 'Cookie Fudge Ice Cream',
-      restaurant: 'Zimero Ice Creams',
-      rating: 4.6,
-      time: '43 min',
-      price: 52,
-      oldPrice: 172,
-      off: '70% OFF',
-      img: '/food/cookie.png',
-    },
-    {
-      name: 'Spiced Toast',
-      restaurant: 'Cha Bar',
-      rating: 4.2,
-      time: '49 min',
-      price: 70,
-      oldPrice: 190,
-      off: '72% OFF',
-      img: '/food/sandwich.png',
-    },
+    { name: "Egg Bhurji Gravy", rating: 4.3, price: 30, oldPrice: 150, off: "80% OFF", img: "https://b.zmtcdn.com/data/o2_assets/bf2d0e73add1c206aeeb9fec762438111727708719.png" },
+    { name: "Palak Paneer", rating: 4.5, price: 30, oldPrice: 150, off: "80% OFF", img: "https://b.zmtcdn.com/data/o2_assets/bf2d0e73add1c206aeeb9fec762438111727708719.png" },
+    { name: "South Indian Filter Coffee", rating: 4.1, price: 52, oldPrice: 172, off: "70% OFF", img: "https://b.zmtcdn.com/data/o2_assets/bf2d0e73add1c206aeeb9fec762438111727708719.png" },
+    { name: "Egg Curry", rating: 4.0, price: 50, oldPrice: 150, off: "67% OFF", img: "https://b.zmtcdn.com/data/o2_assets/bf2d0e73add1c206aeeb9fec762438111727708719.png" },
+    { name: "Cookie Fudge Ice Cream", rating: 4.6, price: 52, oldPrice: 172, off: "70% OFF", img: "https://b.zmtcdn.com/data/o2_assets/bf2d0e73add1c206aeeb9fec762438111727708719.png" },
+    { name: "Spiced Toast", rating: 4.2, price: 70, oldPrice: 190, off: "72% OFF", img: "https://b.zmtcdn.com/data/o2_assets/bf2d0e73add1c206aeeb9fec762438111727708719.png" },
   ];
 
   return (
-    <section className='px-4 md:px-10 py-12'>
-      {/* ⭐ HEADING + CTA */}
-      <div className='flex justify-between items-center mb-8'>
+    <section className="px-3 sm:px-6 md:px-12 py-10 md:py-14 max-w-7xl mx-auto">
+
+      {/* HEADER */}
+      <div className="flex justify-between items-center mb-6 md:mb-10 flex-wrap gap-3">
         <div>
-          <h2 className='text-[25px] sm:text-[32px] md:text-[36px] font-extrabold text-gray-900'>
-            Crazy Deals For You
+          <h2 className="text-[22px] sm:text-[28px] md:text-[35px] font-extrabold text-gray-900 tracking-tight">
+            Crazy Deals For You 🔥
           </h2>
-          <p className='text-sm text-pink-600 font-medium flex items-center gap-1'>
-            🔥 Don’t Miss These Limited Time Offers
+
+          <p className="text-[12px] sm:text-sm text-pink-600 font-medium mt-1 animate-pulse">
+            Limited Time Offers · Grab Before It’s Gone
           </p>
         </div>
 
-        <button className='text-pink-700 hover:text-white hover:bg-pink-600 border border-pink-300 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-all active:scale-[0.96]'>
-          View All ➜
+        <button
+          className="text-sm sm:text-[15px] px-5 py-2 rounded-full font-semibold 
+          bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 
+          shadow-lg shadow-pink-300/40 transition-all active:scale-[0.93]"
+        >
+          View All Deals ↗
         </button>
       </div>
 
-      {/* 🎉 SWIPER */}
+      {/* SWIPER */}
       <Swiper
         modules={[Autoplay, Navigation]}
-        navigation
-        autoplay={{ delay: 2500 }}
+        autoplay={{ delay: 2200, pauseOnMouseEnter: true }}
+        navigation={true}
         spaceBetween={15}
-        slidesPerView={2}
+        slidesPerView={1}
         breakpoints={{
-          350: { slidesPerView: 2 },
-          480: { slidesPerView: 2.5 },
-          640: { slidesPerView: 3 },
-          768: { slidesPerView: 3.5 },
-          1024: { slidesPerView: 4 },
-          1280: { slidesPerView: 5 },
+          350: { slidesPerView: 1 },
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 },
         }}
-        className='pb-4'
+        className="pb-6"
       >
         {deals.map((item, i) => (
-          <SwiperSlide key={i}>
-            <div className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100'>
-              {/* 📌 IMAGE SECTION */}
-              <div className='relative w-full h-[140px] md:h-40 overflow-hidden rounded-t-2xl group'>
-                <Image
-                  src={item.img}
-                  fill
-                  alt={item.name}
-                  className='object-cover group-hover:scale-110 transition duration-300'
-                />
-
-                {/* ✨ Badges */}
-                <span className='absolute bottom-2 left-2 text-[10px] sm:text-xs backdrop-blur-md bg-white/70 text-pink-700 font-bold py-[3px] px-2 rounded-full shadow'>
-                  🛵 Delivery
-                </span>
-
-                <span className='absolute top-2 right-2 text-[10px] sm:text-xs bg-green-600 text-white font-bold py-[3px] px-2 rounded-full shadow'>
-                  {item.off}
-                </span>
-              </div>
-
-              {/* 📌 DETAILS */}
-              <div className='p-3'>
-                <p className='font-bold text-gray-900 text-[14px] sm:text-[16px] line-clamp-1'>
-                  {item.name}
-                </p>
-                <p className='text-[12px] sm:text-[13px] text-gray-500'>
-                  {item.restaurant}
-                </p>
-
-                <div className='flex justify-between items-center text-[12px] sm:text-[13px] mt-1 text-gray-600'>
-                  <span className='flex items-center gap-1 font-semibold text-yellow-600'>
-                    ⭐ {item.rating}
-                  </span>
-                  <span className='text-gray-500'>⏱ {item.time}</span>
-                </div>
-
-                <p className='mt-2 font-bold text-pink-700 text-[14px] sm:text-[16px]'>
-                  ₹{item.price}
-                  <span className='line-through text-gray-400 ml-2 text-[12px] sm:text-[13px]'>
-                    ₹{item.oldPrice}
-                  </span>
-                </p>
-              </div>
-            </div>
+          <SwiperSlide key={i} className="hover:-translate-y-2 transition-all duration-500">
+            <Item
+              image={item.img}
+              name={item.name}
+              new_price={item.price}
+              old_price={item.oldPrice}
+              discount={item.off}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

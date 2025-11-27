@@ -2,14 +2,15 @@
 import { useSelect } from '../context/SelectContext';
 
 import CloudKitchen from '../components/About/cloudKitchen';
-import AboutChocolates from '../components/About/AboutCorporate-gifts';
+import AboutCorporate1 from '../components/About/AboutCorporate-gifts';
+
 
 export default function AboutPage() {
   const { select } = useSelect();
 
   return (
     <div className='mt-30'>
-      {select === 'Cloud Kitchen' ? <CloudKitchen /> : <AboutChocolates />}
+      {select === 'Cloud Kitchen' ? <CloudKitchen /> : <AboutCorporate1 />}
     </div>
   );
 }
