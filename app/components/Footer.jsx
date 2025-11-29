@@ -6,6 +6,7 @@ import { FaInstagram, FaFacebookF, FaYoutube, FaTiktok } from 'react-icons/fa';
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#E6C7A4] text-[#3B2416] font-[Inter]">
+
       {/* Soft lights */}
       <div className="absolute -top-10 left-10 w-36 h-36 bg-[#A77452]/20 blur-[90px] rounded-full"></div>
       <div className="absolute -bottom-10 right-14 w-40 h-40 bg-[#C18A62]/20 blur-[110px] rounded-full"></div>
@@ -83,7 +84,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#C5A482] pt-5 flex flex-wrap gap-4 text-[13.5px] text-[#4B3220]">
+        <div className="border-t border-[#C5A482] pt-5 flex flex-wrap items-center gap-4 text-[13.5px] text-[#4B3220]">
           {[
             ['Sitemap', '/sitemap'],
             ['Privacy Policy', '/privacy-policy'],
@@ -101,6 +102,25 @@ export default function Footer() {
 
           <span className="ml-auto">© Fusion {new Date().getFullYear()}</span>
         </div>
+
+        {/* Powered by Broaddcast - RIGHT SIDE */}
+        <div className="mt-4 flex justify-end items-center gap-2 opacity-90 hover:opacity-100 transition">
+          <span className="text-[14px] font-medium">Powered by</span>
+          <Link
+            href="https://www.broaddcast.com"
+            target="_blank"
+            className="flex items-center"
+          >
+            <Image
+              src="https://www.broaddcast.com/assets/images/logo-white.svg"
+              alt="Broaddcast Logo"
+              width={120}
+              height={45}
+              className="object-contain"
+            />
+          </Link>
+        </div>
+
       </div>
     </footer>
   );

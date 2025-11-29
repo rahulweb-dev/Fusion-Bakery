@@ -6,7 +6,6 @@ import { SelectProvider } from './context/SelectContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { Toaster } from 'react-hot-toast';
-import BottomNav from './components/Navbar';
 import Footer from './components/Footer';
 
 const geistSans = Geist({
@@ -20,9 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Fusion Bakery – Premium Corporate Gifting & Cloud Kitchen Desserts",
+  title: "Fusion – Premium Corporate Gifting & Cloud Kitchen Desserts",
   description:
-    "Fusion Bakery offers premium corporate gifting, luxury hampers, gourmet desserts, cloud kitchen food delivery, brownies, chocolates & cakes. Perfect for employees, events, celebrations & everyday cravings.",
+    "Fusion offers premium corporate gifting, luxury hampers, gourmet desserts, cloud kitchen delivery, brownies, chocolates & cakes. Perfect for employees, events, celebrations & everyday cravings.",
   keywords: [
     "corporate gifts",
     "premium gifting",
@@ -33,27 +32,26 @@ export const metadata = {
     "cloud kitchen",
     "gourmet desserts",
     "brownies online",
-    "online bakery",
+    "online desserts",
     "food delivery",
     "premium chocolates",
     "cake delivery",
     "gift hampers"
   ],
   openGraph: {
-    title: "Fusion Bakery – Corporate Gifting & Cloud Kitchen Desserts",
+    title: "Fusion – Corporate Gifting & Gourmet Desserts",
     description:
-      "Premium corporate gift hampers & gourmet desserts from Fusion Bakery. Order custom gifts & bakery treats online.",
+      "Premium corporate gift hampers & gourmet desserts from Fusion. Order custom gifts & treats online.",
     images: [
       {
         url: "/images/logo.png",
         width: 600,
         height: 400,
-        alt: "Fusion Bakery Corporate Gifts & Desserts"
-      }
+        alt: "Fusion Corporate Gifts & Desserts",
+      },
     ],
   },
 };
-
 
 export default function RootLayout({ children }) {
   return (
@@ -61,7 +59,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Toaster position='top-center' />{' '}
+        <Toaster position='top-center' />
+
         <SelectProvider>
           <CartProvider>
             <WishlistProvider>
