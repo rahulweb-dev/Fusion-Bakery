@@ -112,7 +112,7 @@ export default function Footer() {
             className="flex items-center"
           >
             <Image
-              src="https://www.broaddcast.com/assets/images/logo-white.svg"
+              src="/images/BroaddCast Updated Logo 2022-01.png"
               alt="Broaddcast Logo"
               width={120}
               height={45}
