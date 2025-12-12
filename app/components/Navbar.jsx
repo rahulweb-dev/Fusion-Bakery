@@ -45,13 +45,21 @@ export default function Navbar() {
 
   // 📌 Hide Navigation on scroll
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     const handleScroll = () => {
-      setIsVisible(window.scrollY <= lastScrollY);
-      setLastScrollY(window.scrollY);
+      const current = window.scrollY;
+
+      // Show navbar when scroll is near top or scrolling up
+      if (current < 20 || current < lastScrollY) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(current);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   const menu = [
@@ -67,7 +75,7 @@ export default function Navbar() {
     <>
       {/* TOP NAV */}
       <nav
-        className={`fixed top-4 left-0 z-[100] w-full flex justify-center px-2 sm:px-4 transition-all duration-300 ${isVisible
+        className={`fixed top-4 left-0 z-100 w-full flex justify-center px-2 sm:px-4 transition-all duration-300 ${isVisible
           ? 'translate-y-0 opacity-100'
           : '-translate-y-full opacity-0'
           }`}
@@ -78,8 +86,8 @@ export default function Navbar() {
             <Image
               src='/images/logo.png'
               alt='Logo'
-              width={120}
-              height={60}
+              width={80}
+              height={30}
               className='cursor-pointer w-20 xs:w-24 sm:w-28 md:w-32 h-auto'
             />
           </Link>
