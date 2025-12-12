@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.6",
     "axios": "^1.13.2",
-    "export-to-csv-file": "^0.2.2",
+    "export-to-csv": "^1.4.0",
     "framer-motion": "^12.23.25",
     "json2csv": "^6.0.0-alpha.2",
     "material-react-table": "^3.2.1",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "babel-plugin-react-compiler": "1.0.0",
-    "baseline-browser-mapping": "^2.9.5",
+    "baseline-browser-mapping": "^2.9.6",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "tailwindcss": "^4"
