@@ -5,11 +5,15 @@ import CuisinesBrowse from './cloudComponents/CuisinesBrowse';
 import FoodAds from './cloudComponents/FoodAds';
 import KitchenInsights from './cloudComponents/kitchen-insights';
 import WhyChooseUs from './cloudComponents/WhyChooseUs';
+import CoreValues from './components/CoreValues';
 import FAQSection from './components/FAQSection';
 import GiftingSection from './components/GiftingSection';
+import Header from './components/Header';
+import Hero from './components/Hero';
 
 import Navbar from './components/Navbar';
 import TestimonialSection from './components/TestimonialSection';
+import VisionMission from './components/VisionMission';
 import { useSelect } from './context/SelectContext';
 import BeforeAfterBranding from './Corporate-components/BeforeAfterBranding';
 
@@ -64,6 +68,7 @@ export default function Home() {
   ];
   return (
     <>
+      {/* <Header/> */}
       <Navbar />
       {/* {select === 'Cloud Kitchen' ? 'cloud' : <Hero />} */}
       {select === 'Cloud Kitchen' ? <CuisinesBrowse /> : <Categories />}
@@ -81,7 +86,6 @@ export default function Home() {
       {select === 'Cloud Kitchen' ? '' : <TrustedPartners />}
       <TestimonialSection />{' '}
       {select === 'Cloud Kitchen' ? <FAQSection /> : <FAQSection />}
-  
     </>
   );
 }

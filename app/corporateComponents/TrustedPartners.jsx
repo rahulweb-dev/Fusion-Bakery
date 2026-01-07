@@ -6,9 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
-// 👇 Logo Data
 const logos = [
- 
   '/clients_logos/avasa.png',
   '/clients_logos/basis_reimaged.png',
   '/clients_logos/cl_jewelry.png',
@@ -26,7 +24,6 @@ const logos = [
   '/clients_logos/Vr.png',
 ];
 
-// 👇 CountUp Hook Inside Same File
 function useCountUp(end, duration = 2000) {
   const [count, setCount] = useState(0);
 
@@ -52,47 +49,46 @@ function useCountUp(end, duration = 2000) {
 
 export default function TrustedPartners() {
   return (
-    <section className='py-12 bg-white'>
-      {/* Heading & Subtitle */}
-      <div className='text-center mb-10'>
-        <h2 className='text-4xl font-bold text-gray-900 relative inline-block'>
-          <span className='border-l-4 border-black mr-2 inline-block h-8'></span>
+    <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+      {/* Heading */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-extrabold tracking-tight text-gray-900">
+          <span className="inline-block border-l-4 border-black mr-3 h-8 align-middle" />
           Trusted Partners
         </h2>
-        <p className='text-gray-600 mt-3'>
-          Trusted by Industry Leaders, Chosen for Excellence.
+        <p className="text-gray-600 mt-3 text-lg">
+          Trusted by Industry Leaders, Chosen for Excellence
         </p>
       </div>
 
       {/* Logo Slider */}
-      <div className='max-w-8xl mx-auto'>
+      <div className="max-w-7xl mx-auto">
         <Swiper
           modules={[Autoplay]}
           slidesPerView={5}
-          loop={true}
-          speed={6000}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-          }}
+          loop
+          speed={5000}
+          autoplay={{ delay: 0, disableOnInteraction: false }}
           allowTouchMove={false}
           breakpoints={{
             320: { slidesPerView: 2 },
             640: { slidesPerView: 3 },
             1024: { slidesPerView: 5 },
           }}
-          className='trusted-swiper flex items-center'
+          className="opacity-90 hover:opacity-100 transition"
         >
           {logos.map((logo, idx) => (
             <SwiperSlide key={idx}>
-              <div className='flex justify-center items-center'>
-                <Image
-                  src={logo}
-                  alt='partner-logo'
-                  width={140}
-                  height={60}
-                  className='object-contain grayscale hover:grayscale-0 transition'
-                />
+              <div className="flex justify-center items-center px-6 py-4">
+                <div className="w-full bg-white border rounded-2xl shadow-sm hover:shadow-md transition p-4 flex justify-center">
+                  <Image
+                    src={logo}
+                    alt="partner-logo"
+                    width={180}
+                    height={90}
+                    className="object-contain  hover:grayscale-0 transition"
+                  />
+                </div>
               </div>
             </SwiperSlide>
           ))}
@@ -100,26 +96,30 @@ export default function TrustedPartners() {
       </div>
 
       {/* Stats */}
-      <div className='max-w-6xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-3 text-center gap-8'>
-        <div>
-          <h3 className='text-5xl font-bold text-black'>{useCountUp(500)}+</h3>
-          <p className='text-gray-700 font-medium mt-3'>Happy Clients</p>
+      {/* <div className="max-w-6xl mx-auto mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="p-6 rounded-2xl border bg-white/70 backdrop-blur shadow-sm hover:shadow-md transition text-center">
+          <h3 className="text-5xl font-extrabold text-black">
+            {useCountUp(500)}+
+          </h3>
+          <p className="text-gray-700 font-semibold mt-3">Happy Clients</p>
         </div>
 
-        <div>
-          <h3 className='text-5xl font-bold text-black'>
+        <div className="p-6 rounded-2xl border bg-white/70 backdrop-blur shadow-sm hover:shadow-md transition text-center">
+          <h3 className="text-5xl font-extrabold text-black">
             {useCountUp(80000)}+
           </h3>
-          <p className='text-gray-700 font-medium mt-3'>Gifts Delivered</p>
+          <p className="text-gray-700 font-semibold mt-3">Gifts Delivered</p>
         </div>
 
-        <div>
-          <h3 className='text-5xl font-bold text-black'>{useCountUp(1500)}+</h3>
-          <p className='text-gray-700 font-medium mt-3'>
+        <div className="p-6 rounded-2xl border bg-white/70 backdrop-blur shadow-sm hover:shadow-md transition text-center">
+          <h3 className="text-5xl font-extrabold text-black">
+            {useCountUp(1500)}+
+          </h3>
+          <p className="text-gray-700 font-semibold mt-3">
             Premium Quality Products
           </p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

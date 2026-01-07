@@ -24,11 +24,22 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'b.zmtcdn.com',
       },
-        {
+      {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
       },
-    
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pinimg.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lepure.in',
+      },
     ],
   },
 };
