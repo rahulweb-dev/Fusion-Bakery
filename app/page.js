@@ -23,6 +23,11 @@ import AboutCorporate from './corporateComponents/AboutSection';
 import BannerSlider from './corporateComponents/BannerSlider';
 import Categories from './corporateComponents/Categories';
 import TrustedPartners from './corporateComponents/TrustedPartners';
+import AboutUs from './home-components/AboutUs';
+import FeaturedHighlights from './home-components/FeaturedHighlights';
+import HomeHero from './home-components/HomeHero';
+import OurOfferings from './home-components/OurOfferings';
+import WhyFusionn from './home-components/WhyFusionn';
 export default function Home() {
   const { select } = useSelect();
 
@@ -69,23 +74,16 @@ export default function Home() {
   return (
     <>
       {/* <Header/> */}
-      <Navbar />
-      {/* {select === 'Cloud Kitchen' ? 'cloud' : <Hero />} */}
-      {select === 'Cloud Kitchen' ? <CuisinesBrowse /> : <Categories />}
-      {select === 'Cloud Kitchen' ? (
-        <BannerSlider slides={Cloudbanners} />
-      ) : (
-        <BannerSlider slides={banners} />
-      )}
-      {select === 'Cloud Kitchen' ? <CrazyDeals /> : <HeroSection />}{' '}
-      {select === 'Cloud Kitchen' ? <FoodAds /> : <TrendingItems />}{' '}
-      {select === 'Cloud Kitchen' ? <WhyChooseUs /> : <BeforeAfterBranding />}
-      {select === 'Cloud Kitchen' ? <ComboMealBoxes /> : <AboutCorporate />}
-      {select === 'Cloud Kitchen' ? <KitchenInsights /> : <GiftingSection />}
-      {/* <ContactSection /> */}{' '}
-      {select === 'Cloud Kitchen' ? '' : <TrustedPartners />}
-      <TestimonialSection />{' '}
-      {select === 'Cloud Kitchen' ? <FAQSection /> : <FAQSection />}
+      <HomeHero />
+      <OurOfferings />
+      <WhyFusionn />
+      <AboutUs />
+      <FeaturedHighlights />
+
+      <GiftingSection />
+      <TrustedPartners />
+      <TestimonialSection />
+      {/* {select === 'Cloud Kitchen' ? <FAQSection /> : <FAQSection />} */}
     </>
   );
 }

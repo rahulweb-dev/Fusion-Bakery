@@ -10,43 +10,49 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FloatingChocolates from './FloatingChocolates';
 
 
 export default function page() {
   return (
     <div>
-      <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden">
+      <section data-float-section data-light="#C6A44B33" id="hero" className="relative ...">
+        <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden">
+          <Image
+            src="https://lepure.in/cdn/shop/files/bd_desktop.png?v=1754906333&width=2000"
+            alt="Celebration Chocolate Bar"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          <div className="relative z-10 max-w-6xl w-full px-6 md:px-10 flex items-center">
+            <div className="max-w-2xl">
+              <h1 className="text-white text-4xl md:text-6xl font-light leading-tight">
+                Introducing <br />
+                <span className="font-semibold">Celebration Bars</span>
+              </h1>
 
-        <Image
-          src="https://lepure.in/cdn/shop/files/bd_desktop.png?v=1754906333&width=2000"
-          alt="Celebration Chocolate Bar"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+              <p className="text-gray-200 mt-4 text-lg">
+                The perfect gift for every occasion
+              </p>
 
-
-        <div className="relative z-10 max-w-6xl w-full px-6 md:px-10 flex items-center">
-          <div className="max-w-2xl">
-            <h1 className="text-white text-4xl md:text-6xl font-light leading-tight">
-              Introducing <br />
-              <span className="font-semibold">Celebration Bars</span>
-            </h1>
-
-            <p className="text-gray-200 mt-4 text-lg">
-              The perfect gift for every occasion
-            </p>
-
-            <button className="mt-8 bg-[#6b0f1a] hover:bg-[#8b1321] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide transition">
-              EXPLORE NOW
-            </button>
+              <button className="mt-8 bg-[#6b0f1a] hover:bg-[#8b1321] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide transition">
+                EXPLORE NOW
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section></section>
       <ChocolateAboutSection />
+      <FloatingChocolates
+        items={[
+          { src: "/choco-1.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
+          { src: "/choco-1.png", w: 140, h: 140, speed: 5, className: "bottom-12 right-16" },
+          { src: "/choco-1.png", w: 100, h: 100, speed: 2, className: "top-1/2 left-1/3" },
+        ]}
+      />
       <ChocolateCarousel />
       <ChocolateWhySection />
-      <OfferSection /><ChocolateProductGrid />
+      <OfferSection />
       <ChocolateTestimonials /></div>
   )
 }
@@ -64,91 +70,96 @@ export function ChocolateAboutSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "80% 90%",
-        end: "bottom 20%",
-        scrub: 1,
-        markers: true
+        start: "bottom 20%",
+        end: "200% 100%",
+        scrub: 2.5,
+        // markers: true
       }
     });
 
     tl
-      .to(boxRef.current, { x: 700, y: 1600, ease: "power3.out", duration: 0.5 })
+      .to(boxRef.current, { x: 700, y: 1400, ease: "none", duration: 2.5 })
   }, []);
 
 
   return (
-    <section className="w-full bg-white py-16 md:py-20" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10 px-6 lg:px-10">
+    <section data-float-section data-light="#FFBFA833" id="about">
+      <section className="w-full bg-white py-16 md:py-20" ref={sectionRef}>
 
-        {/* LEFT IMAGE */}
-        <div className="flex justify-center">
-          <Image
-            src="/3.png" // <-- replace with your image
-            alt="Chocolate blocks"
-            width={650}
-            height={500}
-            priority
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10 px-6 lg:px-10">
 
-            ref={boxRef}
-            className="w-full max-w-[540px] h-auto object-contain z-2"
-          />
-        </div>
-
-        {/* RIGHT CONTENT */}
-        <div className="text-gray-700">
-
-          {/* Section Tag */}
-          <div className="flex items-center gap-3">
-            <span className="text-[12px] font-semibold tracking-[2px] text-[#C6A44B]">
-              ABOUT OUR COMPANY
-            </span>
-            <span className="h-[1px] w-10 bg-[#C6A44B]" />
-          </div>
-
-          {/* Heading */}
-          <h2 className="mt-4 text-[34px] md:text-[44px] leading-tight tracking-wide text-gray-900">
-            WE CREATE <br />
-            INCREDIBLY TASTY <br />
-            CHOCOLATE
-          </h2>
-
-          {/* Description */}
-          <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-            eiusmod tempor incididunt ut labore et dolore magna aliqua, quis
-            nostrud exercitation ullamco aliquip.
-          </p>
-
-          {/* Signature */}
-          <div className="mt-8">
+          {/* LEFT IMAGE */}
+          <div className="flex justify-center">
             <Image
-              src="https://i.pinimg.com/1200x/cd/55/03/cd5503193e58cf6a68308c035a28a91b.jpg" // <-- add your signature image
-              alt="Founder Signature"
-              width={200}
-              height={80}
-              className="w-40 h-auto"
-            />
+              src="/3.png" // <-- replace with your image
+              alt="Chocolate blocks"
+              width={650}
+              height={500}
+              priority
 
-            <p className="mt-2 text-[11px] tracking-[2px] font-semibold text-gray-600">
-              FOUNDER OF COMPANY
+              ref={boxRef}
+              className="w-full max-w-[540px] h-auto object-contain z-2"
+            />
+          </div>
+
+          {/* RIGHT CONTENT */}
+          <div className="text-gray-700">
+
+            {/* Section Tag */}
+            <div className="flex items-center gap-3">
+              <span className="text-[12px] font-semibold tracking-[2px] text-[#C6A44B]">
+                ABOUT OUR COMPANY
+              </span>
+              <span className="h-[1px] w-10 bg-[#C6A44B]" />
+            </div>
+
+            {/* Heading */}
+            <h2 className="mt-4 text-[34px] md:text-[44px] leading-tight tracking-wide text-gray-900">
+              WE CREATE <br />
+              INCREDIBLY TASTY <br />
+              CHOCOLATE
+            </h2>
+
+            {/* Description */}
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+              eiusmod tempor incididunt ut labore et dolore magna aliqua, quis
+              nostrud exercitation ullamco aliquip.
             </p>
+
+            {/* Signature */}
+            <div className="mt-8">
+              <Image
+                src="https://i.pinimg.com/1200x/cd/55/03/cd5503193e58cf6a68308c035a28a91b.jpg" // <-- add your signature image
+                alt="Founder Signature"
+                width={200}
+                height={80}
+                className="w-40 h-auto"
+              />
+
+              <p className="mt-2 text-[11px] tracking-[2px] font-semibold text-gray-600">
+                FOUNDER OF COMPANY
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section></section>
   );
 }
 
 
-const items = [
-  { title: "Finest Pralines", img: "https://i.pinimg.com/1200x/c8/05/1e/c8051ec3e7c5fba47bbbe651a14561ac.jpg" },
-  { title: "100% Chocolate", img: "https://i.pinimg.com/1200x/03/d4/b1/03d4b1563efdbd8325785d856f812bb9.jpg" },
-  { title: "Chocolate Cakes", img: "https://i.pinimg.com/736x/50/87/0b/50870b77b0ab6ed969a9a43b2d4ddfbc.jpg" },
-  { title: "Truffles Carames", img: "https://i.pinimg.com/1200x/fe/0a/7c/fe0a7c1e8c941d87daa0e814bc8eb05d.jpg" },
-  { title: "Chocolate Candies", img: "https://i.pinimg.com/736x/9f/2e/34/9f2e34e8ff56eb5c187e30450c5da71e.jpg" },
+const products = [
+  { name: "Chocolate Truffle", price: "9.99", img: "https://i.pinimg.com/1200x/20/dc/9e/20dc9ea67639a55fc598f7dbd47fdf55.jpg" },
+  { name: "Delicious Cupcake", price: "7.99", img: "https://i.pinimg.com/736x/95/83/c6/9583c6db452c76e1f3a15386def671c6.jpg" },
+  { name: "Cheese Classic Burger", price: "20.99", img: "https://i.pinimg.com/736x/a7/e5/03/a7e503932d1f9ce2091641832d7fab42.jpg" },
+  { name: "Chocolate Mud Cake", price: "18.99", img: "https://i.pinimg.com/736x/17/31/06/bc1qre8jdw2azrg6tf49wmp652w00xltddxmpk98xp.jpg" },
+  { name: "Special Edition Bonbons", price: "12.49", img: "https://i.pinimg.com/736x/17/31/06/bc1qre8jdw2azrg6tf49wmp652w00xltddxmpk98xp.jpg" },
 ];
 
+
 export function ChocolateCarousel() {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   return (
     <section className="w-full bg-white py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -158,77 +169,81 @@ export function ChocolateCarousel() {
           EXCLUSIVE CHOCOLATE & TREATS
         </h2>
 
-        <div className="mt-10 relative">
+        <div className="mt-12 relative">
+
+          {/* Custom Buttons */}
+          <button ref={prevRef} className="swiper-prev-btn">◀</button>
+          <button ref={nextRef} className="swiper-next-btn">▶</button>
 
           <Swiper
-            modules={[Navigation, Pagination]}
-            navigation
+            modules={[Pagination, Navigation]}
             pagination={{ clickable: true }}
-            spaceBetween={32}
-            slidesPerView={1.4}
+            spaceBetween={30}
+            slidesPerView={1}
             breakpoints={{
-              640: { slidesPerView: 2.2 },
-              1024: { slidesPerView: 3.2 },
-              1280: { slidesPerView: 4 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
             }}
-            className="pb-10"
+            onInit={(swiper) => {
+              // Attach navigation AFTER refs are available
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
+            className="pb-14"
           >
-            {items.map((item, i) => (
+            {products.map((p, i) => (
               <SwiperSlide key={i}>
-                <div className="w-[300px] mx-auto">
+                <div className="text-center bg-white rounded-3xl border shadow-xl overflow-hidden">
 
-                  {/* Fixed-size card */}
-                  <div className="w-full h-[380px] bg-gray-100 overflow-hidden">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={item.img}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                  {/* Image container (fixed height) */}
+                  <div className="relative w-full h-[240px] bg-[#F6F6F6]">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      className="object-cover rounded-t-3xl"
+                    />
                   </div>
 
-                  {/* Title row */}
-                  <div className="mt-3 flex items-center justify-between">
-                    <h3 className="text-[18px] font-light tracking-wide text-gray-800">
-                      {item.title}
+                  {/* Content */}
+                  <div className="px-4 py-4">
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {p.name}
                     </h3>
-                    <span className="text-[#c7a24b] text-lg">→</span>
+
+                    <p className="text-gray-600 text-sm mt-1">
+                      ${p.price}
+                    </p>
                   </div>
                 </div>
               </SwiperSlide>
+
             ))}
           </Swiper>
         </div>
       </div>
 
-      {/* Style buttons + dots */}
       <style jsx global>{`
-        .swiper-button-next,
-        .swiper-button-prev {
-          width: 44px;
-          height: 44px;
+        .swiper-prev-btn,
+        .swiper-next-btn {
+          position: absolute;
+          top: 40%;
+          z-index: 30;
+          width: 42px;
+          height: 42px;
           border-radius: 999px;
-          background: #ffffff;
+          background: #fff;
           border: 1px solid #d6c7a3;
           color: #8b5b3e;
           font-weight: bold;
-          box-shadow: 0 8px 22px rgba(0,0,0,.12);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-          font-size: 16px;
-        }
-        .swiper-pagination-bullet {
-          border: 1px solid #b9b9b9;
-          background: transparent;
-          opacity: .6;
-        }
-        .swiper-pagination-bullet-active {
-          background: #000;
-          opacity: 1;
-        }
+        .swiper-prev-btn { left: -20px; }
+        .swiper-next-btn { right: -20px; }
       `}</style>
     </section>
   );
@@ -385,106 +400,8 @@ export function OfferSection() {
 
 
 
-const products = [
-  { name: "Chocolate Truffle", price: "9.99", img: "https://i.pinimg.com/1200x/20/dc/9e/20dc9ea67639a55fc598f7dbd47fdf55.jpg" },
-  { name: "Delicious Cupcake", price: "7.99", img: "https://i.pinimg.com/736x/95/83/c6/9583c6db452c76e1f3a15386def671c6.jpg" },
-  { name: "Cheese Classic Burger", price: "20.99", img: "https://i.pinimg.com/736x/a7/e5/03/a7e503932d1f9ce2091641832d7fab42.jpg" },
-  { name: "Chocolate Mud Cake", price: "18.99", img: "https://i.pinimg.com/736x/17/31/06/bc1qre8jdw2azrg6tf49wmp652w00xltddxmpk98xp.jpg" },
-  { name: "Special Edition Bonbons", price: "12.49", img: "https://i.pinimg.com/736x/17/31/06/bc1qre8jdw2azrg6tf49wmp652w00xltddxmpk98xp.jpg" },
-];
 
-export function ChocolateProductGrid() {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
 
-  return (
-    <section className="w-full bg-white py-16 md:py-20 relative">
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-
-        <h2 className="text-[34px] md:text-[44px] font-light">
-          EXPLORE OUR CHOCOLATE TREATS
-        </h2>
-
-        <div className="mt-12 relative">
-
-          {/* Custom Buttons */}
-          <button ref={prevRef} className="swiper-prev-btn">◀</button>
-          <button ref={nextRef} className="swiper-next-btn">▶</button>
-
-          <Swiper
-            modules={[Pagination, Navigation]}
-            pagination={{ clickable: true }}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            onInit={(swiper) => {
-              // Attach navigation AFTER refs are available
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
-            className="pb-14"
-          >
-            {products.map((p, i) => (
-              <SwiperSlide key={i}>
-                <div className="text-center bg-white rounded-3xl border shadow-xl overflow-hidden">
-
-                  {/* Image container (fixed height) */}
-                  <div className="relative w-full h-[240px] bg-[#F6F6F6]">
-                    <Image
-                      src={p.img}
-                      alt={p.name}
-                      fill
-                      className="object-cover rounded-t-3xl"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="px-4 py-4">
-                    <h3 className="text-lg font-semibold text-gray-800">
-                      {p.name}
-                    </h3>
-
-                    <p className="text-gray-600 text-sm mt-1">
-                      ${p.price}
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-            ))}
-          </Swiper>
-        </div>
-      </div>
-
-      <style jsx global>{`
-        .swiper-prev-btn,
-        .swiper-next-btn {
-          position: absolute;
-          top: 40%;
-          z-index: 30;
-          width: 42px;
-          height: 42px;
-          border-radius: 999px;
-          background: #fff;
-          border: 1px solid #d6c7a3;
-          color: #8b5b3e;
-          font-weight: bold;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .swiper-prev-btn { left: -20px; }
-        .swiper-next-btn { right: -20px; }
-      `}</style>
-    </section>
-  );
-}
 
 
 

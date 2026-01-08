@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ModalSelect from "./components/ModalSelect";
 
+
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
   const isAdminRoute = pathname?.startsWith("/admin");
@@ -14,7 +15,7 @@ export default function ClientLayout({ children }) {
   return (
     <>
       <Toaster position="top-center" />
-
+    
       {!isAdminRoute && <Navbar />}
       <ModalSelect />
 

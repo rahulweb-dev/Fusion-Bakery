@@ -60,7 +60,7 @@ export default function TestimonialSection() {
       </div>
 
       {/* Slider */}
-      <div className="max-w-6xl mx-auto px-5 relative z-10">
+      <div className="max-w-6xl mx-auto px-5 relative ">
         <Swiper
           modules={[Pagination, Autoplay]}
           autoplay={{ delay: 3300 }}

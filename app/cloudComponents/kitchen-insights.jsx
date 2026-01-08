@@ -3,79 +3,93 @@ import Image from "next/image";
 
 export default function KitchenInsights() {
   return (
-    <section className="bg-[#fff9f2] text-black pb-20">
+    <section className="bg-[#FAF4EA] text-black pb-24">
 
-      {/* Hero Video Section */}
-      <div className="relative w-full h-[350px] md:h-[500px] overflow-hidden">
+      {/* HERO — Classic Cinematic Banner */}
+      <div className="relative w-full h-[360px] md:h-[520px] overflow-hidden">
         <video
           autoPlay
           loop
           muted
           poster="/images/combo_lunch.jpg"
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full scale-105"
         >
           <source src="https://www.boxupgifting.com/cdn/shop/files/quinn_wmi7f9j2thoue96gtooi4yzt.mp4#t=0.1" type="video/mp4" />
         </video>
 
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <h1 className="text-white text-4xl md:text-6xl font-bold drop-shadow-lg">
-            Inside Our Kitchen 🧑‍🍳🔥
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 flex items-center justify-center">
+          <h1 className="text-white text-4xl md:text-6xl font-light tracking-wide leading-tight">
+            Inside Our Kitchen
+            <span className="block text-sm md:text-lg font-normal mt-2 opacity-90">
+              Crafting Fresh Food with Care & Passion
+            </span>
           </h1>
         </div>
       </div>
 
-      {/* Hygiene & Quality Icons */}
-      <div className="max-w-7xl mx-auto px-6 mt-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* ICON STRIP — Clean & Classic */}
+      <div className="max-w-7xl mx-auto px-6 mt-16 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
         {[
-          { img: "/images/100_Hygienic.jpg", text: "100% Hygienic" },
-          { img: "/images/100_Hygienic.jpg", text: "Fresh Daily" },
-          { img: "/images/100_Hygienic.jpg", text: "Expert Chefs" },
-          { img: "/images/100_Hygienic.jpg", text: "Safe Packaging" },
+          { img: "/icons/kitchen.png", text: "100% Hygienic Kitchen" },
+          { img: "/icons/coffee.png", text: "Fresh Ingredients Daily" },
+          { img: "/icons/chef.png", text: "Experienced Chefs" },
+          { img: "/icons/family.png", text: "Safe & Sealed Packaging" },
         ].map((d, i) => (
-          <div key={i} className="flex flex-col items-center gap-3">
+          <div
+            key={i}
+            className="flex flex-col items-center gap-3 bg-[#DCE1D2] border border-[#E8E3D6] rounded-2xl py-6 shadow-[0_10px_25px_rgba(0,0,0,0.06)]"
+          >
             <Image src={d.img} alt={d.text} width={80} height={80} />
-            <p className="font-semibold text-lg">{d.text}</p>
+            <p className="font-semibold text-lg text-[#5C5345]">{d.text}</p>
           </div>
         ))}
       </div>
 
-      {/* Cooking Process + CTA */}
-      <div className="max-w-6xl mx-auto px-6 mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* SECTION 1 — Cooking Process */}
+      <div className="max-w-6xl mx-auto px-6 mt-20 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
 
         <video
           autoPlay
           loop
           muted
-          className="rounded-2xl shadow-xl h-[320px] md:h-[400px] w-full object-cover"
+          className="rounded-3xl shadow-[0_25px_45px_rgba(0,0,0,0.18)] w-full h-[340px] md:h-[420px] object-cover"
         >
           <source src="https://www.boxupgifting.com/cdn/shop/files/quinn_wmi7f9j2thoue96gtooi4yzt.mp4#t=0.1" type="video/mp4" />
         </video>
 
         <div>
-          <h2 className="text-3xl font-bold mb-4 text-[#7a3f00]">
-            Fresh. Clean. Professional.
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#7A4A1F]">
+            Fresh • Clean • Professional
           </h2>
-          <p className="text-gray-600 leading-relaxed">
-            Every dish cooked in our cloud kitchen follows strict hygiene
-            protocols using sanitized tools, fresh vegetables, premium oils,
-            and packaged in tamper-proof containers ensuring safety from kitchen to doorstep.
+
+          <p className="text-gray-600 leading-relaxed mt-4">
+            Every dish in our cloud kitchen is prepared under strict hygiene
+            standards using sanitized equipment, fresh produce, premium oils,
+            and packed in tamper-proof packaging — ensuring safety from
+            kitchen to doorstep.
           </p>
-          <button className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-full shadow-lg transition-all">
+
+          <button className="mt-7 bg-gradient-to-r from-[#D8C39A] to-[#BFA26E] hover:from-[#C9AF7C] hover:to-[#A78B5B]
+          text-black font-semibold px-7 py-3 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.18)]
+          transition-all hover:-translate-y-[2px] active:scale-95">
             Order Now 🍱
           </button>
         </div>
       </div>
 
-      {/* Packaging Video Section */}
-      <div className="max-w-6xl mx-auto px-6 mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* SECTION 2 — Packaging */}
+      <div className="max-w-6xl mx-auto px-6 mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+
         <div>
-          <h2 className="text-3xl font-bold mb-4 text-[#7a3f00]">
-            Your Food Stays Safe
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#7A4A1F]">
+            Your Food Stays Safe — From Kitchen to Table
           </h2>
-          <p className="text-gray-600 leading-relaxed">
-            From hot meals to cold desserts — we use insulated, leak-proof,
-            and eco-friendly packaging that maintains temperature and
-            freshness till it reaches your table.
+
+          <p className="text-gray-600 leading-relaxed mt-4">
+            We use insulated, leak-proof and eco-friendly packaging that keeps
+            meals fresh and temperature-controlled until they reach you —
+            preserving taste, aroma, and nutrition.
           </p>
         </div>
 
@@ -83,7 +97,7 @@ export default function KitchenInsights() {
           autoPlay
           loop
           muted
-          className="rounded-2xl shadow-xl h-[320px] md:h-[400px] w-full object-cover"
+          className="rounded-3xl shadow-[0_25px_45px_rgba(0,0,0,0.18)] w-full h-[340px] md:h-[420px] object-cover"
         >
           <source src="https://www.boxupgifting.com/cdn/shop/files/quinn_wmi7f9j2thoue96gtooi4yzt.mp4#t=0.1" type="video/mp4" />
         </video>

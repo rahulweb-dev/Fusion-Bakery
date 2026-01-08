@@ -1,5 +1,6 @@
 import GiftingSection from '@/app/components/GiftingSection';
 import BeforeAfterBranding from '@/app/Corporate-components/BeforeAfterBranding';
+import CorporateGiftingHero from '@/app/Corporate-components/CorporateGiftingHero';
 import HeroSection from '@/app/Corporate-components/HeroSection'
 import TrendingItems from '@/app/Corporate-components/TrendingItems';
 import AboutCorporate from '@/app/corporateComponents/AboutSection';
@@ -34,6 +35,7 @@ export default function page() {
       <TrendingItems />
       <BeforeAfterBranding />
       <AboutCorporate />
+      <CorporateGiftingHero/>
       <GiftingSection />
       <TrustedPartners />
     </div>
