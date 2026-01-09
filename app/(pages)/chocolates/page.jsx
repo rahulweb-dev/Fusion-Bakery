@@ -45,7 +45,7 @@ export default function page() {
       <ChocolateAboutSection />
       <FloatingChocolates
         items={[
-          { src: "/choco-1.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
+          { src: "/chocolates/choco1.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
         
         ]}
       />
