@@ -5,6 +5,7 @@ import CloudKitchen from '../components/About/cloudKitchen';
 import AboutCorporate1 from '../components/About/AboutCorporate-gifts';
 import VisionMission from '../components/VisionMission';
 import CoreValues from '../components/CoreValues';
+import Image from "next/image";
 
 
 export default function AboutPage() {
@@ -17,7 +18,6 @@ export default function AboutPage() {
       <OriginStory />
       <JourneyExpansion />
       <WhatWeDo />
-      <Philosophy />
       <VisionMission />
       <CoreValues />
       <LeadershipTeam />
@@ -26,59 +26,76 @@ export default function AboutPage() {
     </div>
   );
 }
+
+
 export function AboutHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-amber-50 via-white to-white py-24">
-      {/* Decorative blur shapes */}
-      <div className="pointer-events-none absolute -top-10 -left-10 h-72 w-72 rounded-full bg-amber-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-orange-200/40 blur-3xl" />
+    <section className="relative bg-[#FBF6EE] py-24">
+      <div className="mx-auto max-w-6xl px-6">
 
-      <div className="relative mx-auto max-w-6xl px-6 text-center">
-        <span className="inline-block rounded-full border border-amber-300 bg-amber-50 px-4 py-1 text-sm font-medium tracking-wide text-amber-700">
-          About FUSIONN
-        </span>
-
-        <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-          Our Story — Born from Compassion, <br className="hidden md:block" />
-          <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-            Grown with Purpose
+        {/* Top Content */}
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="text-xs tracking-[0.3em] uppercase text-amber-700">
+            About Fusionn
           </span>
-        </h1>
 
-        <p className="mt-4 mx-auto max-w-3xl text-lg text-gray-600">
-          FUSIONN began as a humble act of service during the pandemic — today,
-          it stands as a brand that blends food, gifting, craftsmanship and
-          meaningful experiences, crafted with heart and intention.
-        </p>
+          <h1 className="mt-6 text-4xl md:text-5xl font-semibold leading-tight text-gray-900">
+            Our Story — Crafted with{" "}
+            <span className="text-amber-700">Purpose</span>
+          </h1>
 
-        {/* CTA Buttons */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <button className="rounded-xl bg-amber-600 px-6 py-3 font-semibold text-white shadow-lg shadow-amber-200 transition hover:bg-amber-700">
-            Explore Our Journey
-          </button>
-          <button className="rounded-xl border border-gray-300 bg-white px-6 py-3 font-semibold text-gray-700 transition hover:border-gray-400 hover:bg-gray-50">
-            Meet the Founders
-          </button>
+          <p className="mt-5 text-[17px] leading-relaxed text-gray-600">
+            FUSIONN began as a quiet act of service during the pandemic.
+            Today, it stands as a brand that blends food, gifting and
+            craftsmanship — thoughtfully and responsibly.
+          </p>
+
+          {/* CTA */}
+          <div className="mt-8 flex justify-center gap-4">
+            <button className="rounded-full bg-amber-700 px-7 py-3 text-sm font-medium text-white hover:bg-amber-800 transition">
+              Explore Our Journey
+            </button>
+            <button className="rounded-full border border-gray-300 px-7 py-3 text-sm text-gray-700 hover:bg-white transition">
+              Meet the Founders
+            </button>
+          </div>
         </div>
 
-        {/* Impact Stats */}
-        <div className="mt-12 grid grid-cols-2 gap-6 rounded-2xl border bg-white/80 p-6 shadow-md backdrop-blur md:grid-cols-4">
-          <div>
-            <p className="text-3xl font-bold text-amber-700">10K+</p>
-            <p className="text-sm text-gray-600">Meals Served</p>
+        {/* Image + Stats */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+          {/* Hero Image */}
+          <div className="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden shadow-sm">
+            <Image
+              src="https://i.pinimg.com/1200x/80/af/b0/80afb0e8aa2c32d624416ee376feae06.jpg"   // replace with your image
+              alt="Crafting chocolate"
+              fill
+              className="object-cover"
+            />
           </div>
-          <div>
-            <p className="text-3xl font-bold text-amber-700">50+</p>
-            <p className="text-sm text-gray-600">Corporate Partners</p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-8">
+            {[
+              ["🍫", "50+", "Corporate Partners"],
+              ["🎁", "20+", "Curated Lines"],
+              ["👨‍🍳", "10K+", "Meals Served"],
+              ["✨", "100%", "Handcrafted"],
+            ].map(([icon, value, label]) => (
+              <div key={label} className="flex items-start gap-3">
+                <span className="text-2xl">{icon}</span>
+                <div>
+                  <p className="text-2xl font-semibold text-gray-900">
+                    {value}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {label}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div>
-            <p className="text-3xl font-bold text-amber-700">20+</p>
-            <p className="text-sm text-gray-600">Curated Product Lines</p>
-          </div>
-          <div>
-            <p className="text-3xl font-bold text-amber-700">100%</p>
-            <p className="text-sm text-gray-600">Handcrafted with Care</p>
-          </div>
+
         </div>
       </div>
     </section>
@@ -87,48 +104,33 @@ export function AboutHero() {
 
 
 
+
 export function OriginStory() {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white to-amber-50/30">
-      {/* Decorative blurred shapes */}
-      <div className="pointer-events-none absolute -top-10 right-0 h-60 w-60 rounded-full bg-amber-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 -left-10 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
-
-      <div className="relative mx-auto max-w-5xl px-6">
-        {/* Section Tag */}
-        <span className="inline-block rounded-full border border-amber-300 bg-amber-50 px-4 py-1 text-sm font-medium tracking-wide text-amber-700">
-          Our Origin Story
+    <section className="py-24 bg-white">
+      <div className="mx-auto max-w-4xl px-6">
+        <span className="text-sm tracking-widest uppercase text-amber-700">
+          Our Origin
         </span>
 
-        <h2 className="mt-6 text-3xl font-extrabold tracking-tight md:text-4xl">
+        <h2 className="mt-4 text-3xl md:text-4xl font-semibold">
           Where It All Began
         </h2>
 
-        {/* Lead Paragraph */}
-        <p className="mt-4 text-gray-700 text-lg leading-relaxed">
-          During the COVID-19 pandemic, while large-scale drives supported the
-          underprivileged, we noticed an overlooked group — elderly and retired
-          individuals unsure of their next healthy, home-style meal.
+        <p className="mt-6 text-[17px] leading-relaxed text-gray-700">
+          During the pandemic, while large-scale initiatives supported communities,
+          we noticed an overlooked group — elderly individuals seeking nourishing,
+          home-style meals with dignity.
         </p>
 
-        {/* Timeline Card */}
-        <div className="mt-10 relative rounded-2xl border bg-white/90 p-8 shadow-lg backdrop-blur">
-          {/* Timeline line */}
-          <span className="absolute left-6 top-6 h-10 w-1 rounded-full bg-amber-400" />
+        <p className="mt-4 text-gray-600 leading-relaxed">
+          What began as a humble cloud kitchen soon earned trust, connection
+          and a deeper purpose.
+        </p>
 
-          <p className="pl-6 text-gray-800 text-lg leading-relaxed">
-            What started as a humble cloud kitchen serving{" "}
-            <span className="font-semibold text-amber-700">100–200 families</span>,
-            soon earned trust, love and purpose.
-          </p>
-
-          {/* Quote highlight */}
-          <div className="mt-6 rounded-xl border-l-4 border-amber-500 bg-amber-50 px-4 py-3">
-            <p className="italic text-amber-800">
-              “FUSIONN didn’t begin as a business — it began as a service from the heart.”
-            </p>
-          </div>
-        </div>
+        <blockquote className="mt-10 border-l-4 border-amber-600 pl-6 italic text-gray-700">
+          “FUSIONN didn’t begin as a business — it began as a service from the heart.”
+        </blockquote>
       </div>
     </section>
   );
@@ -138,70 +140,65 @@ export function OriginStory() {
 
 export function JourneyExpansion() {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-amber-50/20 to-white">
-      {/* Decorative shapes */}
-      <div className="pointer-events-none absolute top-0 left-0 h-72 w-72 -translate-x-1/3 -translate-y-1/3 rounded-full bg-orange-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 translate-x-1/4 translate-y-1/4 rounded-full bg-amber-300/30 blur-3xl" />
+    <section className="relative py-28 bg-[#FFFBF5] overflow-hidden">
+      {/* Soft ambient glow */}
+      <div className="pointer-events-none absolute top-1/2 left-0 h-72 w-72 -translate-y-1/2 rounded-full bg-amber-200/30 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 translate-x-1/4 translate-y-1/4 rounded-full bg-orange-200/30 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl px-6 grid gap-10 md:grid-cols-2 items-center">
-        {/* Text Content */}
+      <div className="relative mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-16 items-start">
+        
+        {/* Left: Story Content */}
         <div>
-          <span className="inline-block rounded-full border border-amber-300 bg-amber-50 px-4 py-1 text-sm font-medium tracking-wide text-amber-800">
+          <span className="text-xs tracking-[0.3em] uppercase text-amber-700">
             Growth & Evolution
           </span>
 
-          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold tracking-tight">
+          <h2 className="mt-5 text-3xl md:text-4xl font-semibold leading-tight text-gray-900">
             From a Kitchen to a{" "}
-            <span className="bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent">
-              Trusted Brand
-            </span>
+            <span className="text-amber-700">Trusted Brand</span>
           </h2>
 
-          <p className="mt-4 text-lg leading-relaxed text-gray-700">
+          <p className="mt-6 text-[16px] leading-relaxed text-gray-700">
             In 2025, FUSIONN expanded its vision by acquiring{" "}
-            <span className="font-semibold text-amber-700">RENEE BAKERS</span> —
-            a reputed brand known for premium corporate chocolates and
-            professionally trained chefs.
+            <span className="font-medium text-amber-700">RENEE BAKERS</span> — a
+            respected name in premium chocolates and refined corporate gifting.
           </p>
 
-          <p className="mt-3 text-gray-700 leading-relaxed">
-            Together, we built a unified identity that blends{" "}
-            <span className="font-medium">food, gifting, craftsmanship and meaningful experiences</span>.
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            This marked a defining chapter in our journey — uniting culinary
+            care, craftsmanship, and thoughtful experiences under one
+            purposeful identity.
           </p>
 
-          {/* Highlight Bar */}
-          <div className="mt-6 flex items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
-            <span className="h-3 w-3 rounded-full bg-amber-600" />
-            <p className="text-sm font-medium text-amber-800">
-              A milestone rooted in purpose — not scale.
-            </p>
-          </div>
+          {/* Subtle divider */}
+          <div className="mt-8 h-[2px] w-16 rounded-full bg-amber-600/40" />
         </div>
 
-        {/* Right Card */}
-        <div className="relative rounded-2xl border bg-white p-8 shadow-lg">
-          {/* Accent stripe */}
-          <span className="absolute -top-2 right-6 h-10 w-1.5 rounded-full bg-amber-500" />
+        {/* Right: Highlight Card */}
+        <div className="relative rounded-2xl border border-gray-200 bg-white p-10 shadow-sm">
+          {/* Accent line */}
+          <span className="absolute top-0 left-8 h-1 w-16 rounded-full bg-amber-600" />
 
-          <h3 className="text-lg font-semibold">
+          <h3 className="mt-6 text-lg font-medium text-gray-900">
             Thoughtful Growth. Purposeful Expansion.
           </h3>
 
-          <p className="mt-2 text-gray-600 leading-relaxed">
-            What began with compassion is now a brand built on trust — powered
-            by craftsmanship, quality and human connection.
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            Every step forward was guided by intent — not scale.  
+            Growth came from trust, care, and a commitment to doing things the
+            right way.
           </p>
 
-          {/* Optional Image Placeholder */}
-          <div className="mt-6 rounded-xl border bg-gray-50 p-4 text-center text-sm text-gray-500">
-            {/* Replace with <Image /> if you add visuals later */}
-            Brand Collaboration — FUSIONN × RENEE BAKERS
-          </div>
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            We believe expansion should strengthen values, not dilute them.
+          </p>
         </div>
       </div>
     </section>
   );
 }
+
+
 
 
 
@@ -209,63 +206,75 @@ export function WhatWeDo() {
   const services = [
     {
       title: "Wholesome Cloud Kitchen Services",
-      desc: "Nutritious, homestyle meals crafted with care and thoughtfulness.",
+      desc: "Nutritious meals inspired by tradition, prepared with care and consistency for everyday nourishment.",
+      img: "/images/cloud-kitchen.jpg", // optional
     },
     {
       title: "Premium Corporate Chocolates",
-      desc: "Handcrafted artisan chocolates curated for meaningful gifting.",
+      desc: "Handcrafted chocolates created for meaningful moments, refined gifting, and lasting impressions.",
+      img: "/images/corporate-chocolates.jpg",
     },
     {
-      title: "Curated Corporate Gifting Solutions",
-      desc: "Purpose-driven gifting that blends craftsmanship and experience.",
+      title: "Curated Corporate Gifting",
+      desc: "Purpose-driven gifting solutions that reflect warmth, craftsmanship, and thoughtful intent.",
+      img: "/images/corporate-gifting.jpg",
     },
   ];
 
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white to-amber-50/20">
-      {/* decorative shapes */}
-      <div className="pointer-events-none absolute -top-10 left-0 h-64 w-64 rounded-full bg-amber-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
+    <section className="relative py-28 bg-[#FFFBF5]">
+      {/* soft ambient glow */}
+      <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-amber-200/30 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl px-6 text-center">
-        <span className="inline-block rounded-full border border-amber-300 bg-amber-50 px-4 py-1 text-sm font-medium tracking-wide text-amber-800">
-          Our Work & Offerings
-        </span>
+      <div className="relative mx-auto max-w-6xl px-6">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="text-xs tracking-[0.3em] uppercase text-amber-700">
+            What We Do
+          </span>
 
-        <h2 className="mt-6 text-3xl md:text-4xl font-extrabold tracking-tight">
-          What We Do
-        </h2>
+          <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-gray-900">
+            Our Offerings
+          </h2>
 
-        <p className="mt-3 max-w-3xl mx-auto text-gray-700">
-          Every offering is built on compassion, craftsmanship and meaningful experience.
-        </p>
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            Thoughtfully crafted services that blend nourishment, gifting,
+            and meaningful human connection.
+          </p>
+        </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {services.map((item, i) => (
+        {/* Cards */}
+        <div className="mt-16 grid gap-10 md:grid-cols-3">
+          {services.map((s, i) => (
             <div
               key={i}
-              className="group rounded-2xl border bg-white/90 p-8 shadow-lg backdrop-blur transition hover:-translate-y-1 hover:shadow-xl"
+              className="group relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
-              {/* Accent badge */}
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-600 group-hover:bg-orange-600 transition" />
-                <p className="text-sm font-medium text-amber-700">
-                  Service {i + 1}
+              {/* Image */}
+              <div className="relative h-40 w-full overflow-hidden rounded-xl bg-gray-100">
+                <Image
+                  src={s.img}
+                  alt={s.title}
+                  fill
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="mt-6">
+                <span className="inline-block h-2 w-2 rounded-full bg-amber-600 mb-4" />
+
+                <h3 className="text-lg font-medium text-gray-900">
+                  {s.title}
+                </h3>
+
+                <p className="mt-3 text-[15px] leading-relaxed text-gray-600">
+                  {s.desc}
                 </p>
               </div>
 
-              <h3 className="mt-4 text-lg font-semibold leading-snug">
-                {item.title}
-              </h3>
-
-              <p className="mt-2 text-gray-600 leading-relaxed">
-                {item.desc}
-              </p>
-
-              {/* Bottom highlight */}
-              <div className="mt-6 rounded-xl bg-amber-50 py-2 text-sm text-amber-800 border border-amber-200">
-                Crafted with care, delivered with purpose.
-              </div>
+              {/* subtle bottom accent */}
+              <div className="mt-6 h-[2px] w-10 rounded-full bg-amber-600/40 transition group-hover:w-16" />
             </div>
           ))}
         </div>
@@ -273,112 +282,102 @@ export function WhatWeDo() {
     </section>
   );
 }
+
 
 
 
 
 export function Philosophy() {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-gray-900 via-gray-950 to-black text-white overflow-hidden">
-      {/* Soft ambient glow */}
-      <div className="pointer-events-none absolute top-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-amber-500/10 blur-3xl" />
-
-      {/* subtle grid overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-      <div className="relative mx-auto max-w-4xl px-6 text-center">
-        <span className="inline-block rounded-full border border-amber-400/40 bg-amber-100/5 px-4 py-1 text-sm font-medium tracking-wide text-amber-300">
-          Purpose • Craft • Integrity
+    <section className="py-24 bg-gray-950 text-white">
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <span className="text-sm tracking-widest uppercase text-amber-300">
+          Our Philosophy
         </span>
 
-        <h2 className="mt-6 text-3xl md:text-4xl font-extrabold tracking-tight">
-          Our Philosophy
+        <h2 className="mt-5 text-3xl md:text-4xl font-semibold">
+          Guided by Intention
         </h2>
 
-        <p className="mt-4 max-w-3xl mx-auto text-gray-300 leading-relaxed">
-          Tradition meets tomorrow — where warmth, creativity and precision
-          come together in everything we craft and deliver.
-        </p>
-
-        {/* Quote block */}
-        <div className="mt-10 relative mx-auto max-w-3xl rounded-2xl border border-amber-200/20 bg-white/5 px-6 py-6 backdrop-blur">
-          {/* Accent line */}
-          <span className="absolute -top-3 left-1/2 h-6 w-1 rounded-full bg-amber-400" />
-
-          <blockquote className="text-lg italic text-amber-200 leading-relaxed">
-            “Where tradition melts into innovation — and our passion becomes
-            meaningful customer experience.”
-          </blockquote>
-        </div>
+        <blockquote className="mt-8 text-xl italic text-amber-200 leading-relaxed">
+          “Where tradition meets innovation — and craftsmanship becomes
+          meaningful experience.”
+        </blockquote>
       </div>
     </section>
   );
 }
+
 
 export function LeadershipTeam() {
   const members = [
-    { name: "Vemuri Sireesha", role: "Founder & Director" },
-    { name: "Divya", role: "Founder & Director" },
-    { name: "Vemuri Vaishnavi", role: "Chairman" },
+    {
+      name: "Vemuri Sireesha",
+      role: "Founder & Director",
+      img: "https://i.pinimg.com/736x/9a/5b/07/9a5b079a7baad7d7d7264fef1ffbc91f.jpg",
+    },
+    {
+      name: "Divya",
+      role: "Founder & Director",
+      img: "https://i.pinimg.com/1200x/b2/70/b5/b270b568e1e6fdc59819d24117a42ad1.jpg",
+    },
+    {
+      name: "Vemuri Vaishnavi",
+      role: "Chairman",
+      img: "https://i.pinimg.com/736x/a3/ae/ac/a3aeac1628cd4e9b4ead5dc43864e813.jpg",
+    },
   ];
 
-  const getInitials = (name) =>
-    name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase();
-
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white to-amber-50/20">
-      {/* Decorative blur accents */}
-      <div className="pointer-events-none absolute -top-10 left-0 h-64 w-64 rounded-full bg-amber-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
+    <section className="py-24 bg-white">
+      <div className="mx-auto max-w-7xl px-6">
 
-      <div className="relative mx-auto max-w-6xl px-6">
-        <div className="text-center">
-          <span className="inline-block rounded-full border border-amber-300 bg-amber-50 px-4 py-1 text-sm font-medium tracking-wide text-amber-800">
-            Leadership & Governance
-          </span>
-
-          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold tracking-tight">
-            Leadership Team
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-semibold text-gray-900">
+            Board of Directors
           </h2>
-
-          <p className="mt-3 max-w-2xl mx-auto text-gray-700">
-            The people who guide our purpose, culture and commitment to excellence.
-          </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {members.map((m, i) => (
             <div
               key={i}
-              className="group rounded-2xl border bg-white/90 p-8 shadow-lg backdrop-blur transition hover:-translate-y-1 hover:shadow-xl text-center"
+              className="relative h-[460px] rounded-[28px] overflow-hidden group"
             >
-              {/* Avatar / Initial Badge */}
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 text-amber-700 font-bold text-lg border border-amber-300">
-                {getInitials(m.name)}
+              {/* Red vertical panel */}
+              <div className="absolute inset-y-0 left-0 w-[35%] bg-[#2C0804]" />
+
+              {/* Image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative h-[90%] w-[75%] z-10">
+                  <Image
+                    src={m.img}
+                    alt={m.name}
+                    fill
+                    className="object-cover rounded-[22px]"
+                  />
+                </div>
               </div>
 
-              <h3 className="mt-4 text-lg font-semibold">{m.name}</h3>
+              {/* Bottom Gradient */}
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent z-20" />
 
-              <span className="mt-1 inline-block rounded-full bg-amber-50 px-3 py-1 text-sm font-medium text-amber-700 border border-amber-200">
-                {m.role}
-              </span>
-
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-                Championing values of compassion, craftsmanship and purposeful growth.
-              </p>
-
-              <div className="mt-6 h-1 w-12 mx-auto rounded-full bg-amber-500 group-hover:w-16 transition-all" />
+              {/* Name & Role */}
+              <div className="absolute bottom-6 left-6 right-6 z-30 text-white">
+                <h3 className="text-lg font-semibold">{m.name}</h3>
+                <p className="text-sm opacity-80">{m.role}</p>
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
+
 
 
 export function ClosingPromise() {
