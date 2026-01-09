@@ -1,27 +1,8 @@
 'use client';
-import ComboMealBoxes from './cloudComponents/ComboMealBoxes';
-import CrazyDeals from './cloudComponents/CrazyDeals';
-import CuisinesBrowse from './cloudComponents/CuisinesBrowse';
-import FoodAds from './cloudComponents/FoodAds';
-import KitchenInsights from './cloudComponents/kitchen-insights';
-import WhyChooseUs from './cloudComponents/WhyChooseUs';
-import CoreValues from './components/CoreValues';
-import FAQSection from './components/FAQSection';
 import GiftingSection from './components/GiftingSection';
-import Header from './components/Header';
-import Hero from './components/Hero';
-
-import Navbar from './components/Navbar';
 import TestimonialSection from './components/TestimonialSection';
-import VisionMission from './components/VisionMission';
 import { useSelect } from './context/SelectContext';
-import BeforeAfterBranding from './Corporate-components/BeforeAfterBranding';
 
-import HeroSection from './Corporate-components/HeroSection';
-import TrendingItems from './Corporate-components/TrendingItems';
-import AboutCorporate from './corporateComponents/AboutSection';
-import BannerSlider from './corporateComponents/BannerSlider';
-import Categories from './corporateComponents/Categories';
 import TrustedPartners from './corporateComponents/TrustedPartners';
 import AboutUs from './home-components/AboutUs';
 import FeaturedHighlights from './home-components/FeaturedHighlights';
@@ -75,6 +56,7 @@ export default function Home() {
     <>
       {/* <Header/> */}
       <HomeHero />
+ 
       <OurOfferings />
       <WhyFusionn />
       <AboutUs />

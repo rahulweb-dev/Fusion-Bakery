@@ -46,8 +46,7 @@ export default function page() {
       <FloatingChocolates
         items={[
           { src: "/choco-1.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
-          { src: "/choco-1.png", w: 140, h: 140, speed: 5, className: "bottom-12 right-16" },
-          { src: "/choco-1.png", w: 100, h: 100, speed: 2, className: "top-1/2 left-1/3" },
+        
         ]}
       />
       <ChocolateCarousel />

@@ -1,99 +1,67 @@
 "use client";
-import { useLayoutEffect } from "react";
+
+import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function FloatingChocolates({ items = [] }) {
+  const followerRef = useRef(null);
 
   useLayoutEffect(() => {
-    const follower = document.querySelector(".choco-follower");
-    const others = gsap.utils.toArray(".choco-float:not(.choco-follower)");
+    if (!followerRef.current) return;
 
-    // ========= 1️⃣ Mouse-Follower Shadow =========
-    const handleMove = (e) => {
-      const x = (e.clientX - window.innerWidth / 2) / 25;
-      const y = (e.clientY - window.innerHeight / 2) / 25;
+    // Center transform
+    gsap.set(followerRef.current, {
+      xPercent: -50,
+      yPercent: -50,
+    });
 
-      gsap.to(follower, {
-        x,
-        y,
-        scale: 1.05,
-        rotation: x * 0.6,
+    const move = (e) => {
+      gsap.to(followerRef.current, {
+        x: e.clientX,
+        y: e.clientY,
         duration: 0.35,
-        ease: "power2.out",
+        ease: "power3.out",
       });
     };
 
-    // ========= 2️⃣ Idle Floating for Background Chocolates =========
-    others.forEach((el) => {
-      const speed = el.dataset.speed || 2;
-
-      gsap.to(el, {
-        x: `+=${gsap.utils.random(-25, 25)}`,
-        y: `+=${gsap.utils.random(-18, 18)}`,
-        rotation: gsap.utils.random(-4, 4),
-        duration: gsap.utils.random(2, 4),
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-      });
-    });
-
-    // ========= 3️⃣ Section-Fade / Parallax Lighting =========
-    const sections = document.querySelectorAll("[data-float-section]");
-
-    sections.forEach((section) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 70%",
-        end: "bottom 10%",
-        scrub: 1,
-        onUpdate(self) {
-          const progress = self.progress;
-          const color = section.dataset.light || "#C6A44B33";
-
-          gsap.to(".floating-light", {
-            background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-            opacity: progress,
-            duration: 0.3,
-          });
-
-          gsap.to(".choco-float", {
-            opacity: gsap.utils.clamp(0.15, 1, progress * 1.4),
-            duration: 0.3,
-          });
-        },
-      });
-    });
-
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
   }, []);
 
   return (
-    <>
-      {/* Section glow */}
-      <div className="floating-light fixed inset-0 pointer-events-none z-[3] opacity-0" />
-
-      {/* Floating layer */}
-      <div className="pointer-events-none fixed inset-0 z-[4]">
-        {items.map((item, i) => (
+    <div className="fixed inset-0 z-[9999] pointer-events-none">
+      {/* FOLLOWER (ONLY FIRST ITEM) */}
+      {items[0] && (
+        <div
+          ref={followerRef}
+          className="absolute top-20 left-0"
+        >
           <Image
-            key={i}
+            src={items[0].src}
+            width={items[0].w}
+            height={items[0].h}
+            alt="chocolate"
+            className="drop-shadow-2xl"
+          />
+        </div>
+      )}
+
+      {/* STATIC FLOATING (OPTIONAL) */}
+      {items.slice(1).map((item, i) => (
+        <div
+          key={i}
+          className={`absolute ${item.className}`}
+        >
+          <Image
             src={item.src}
             width={item.w}
             height={item.h}
-            alt="choco"
-            className={`choco-float absolute opacity-0 ${item.className} ${
-              i === 0 ? "choco-follower" : ""
-            }`}
-            data-speed={item.speed}
+            alt="chocolate"
+            className="opacity-70"
           />
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 }

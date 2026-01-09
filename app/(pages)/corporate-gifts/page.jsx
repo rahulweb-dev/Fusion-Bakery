@@ -8,6 +8,7 @@ import BannerSlider from '@/app/corporateComponents/BannerSlider'
 import Categories from '@/app/corporateComponents/Categories'
 import TrustedPartners from '@/app/corporateComponents/TrustedPartners';
 import React from 'react'
+import FloatingChocolates from '../chocolates/FloatingChocolates';
 const banners = [
   {
     image:
@@ -31,6 +32,12 @@ const banners = [
 export default function page() {
   return (
     <div>  <Categories />
+       <FloatingChocolates
+            items={[
+              { src: "/chocolates/gift-cursor.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
+            
+            ]}
+          />
       <BannerSlider slides={banners} /><HeroSection />
       <TrendingItems />
       <BeforeAfterBranding />
