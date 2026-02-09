@@ -73,7 +73,7 @@ export default function ProductCard({ item }) {
       </div>
 
       {/* Add to Cart Button */}
-      <button
+      {/* <button
         onClick={() => {
           addToCart(item);
           toast.success("Added to cart 🛒");
@@ -81,7 +81,7 @@ export default function ProductCard({ item }) {
         className="mt-4 w-full bg-black text-white py-2 rounded-lg text-sm font-medium hover:bg-gray-900 transition active:scale-95"
       >
         🛒 Add to Cart
-      </button>
+      </button> */}
 
       {/* Delivery Information */}
       <p className="mt-3 text-sm text-gray-600 flex items-center gap-1">

@@ -93,7 +93,7 @@ export default function HeroSection() {
                       onClick={() => likeProduct(item)}
                       className="absolute top-3 right-3 text-xl sm:text-2xl"
                     >
-                      {liked ? '❤️' : '🤍'}
+                      {/* {liked ? '❤️' : '🤍'} */}
                     </button>
 
                     <p className="text-[11px] sm:text-xs text-gray-500 tracking-widest font-light">CATEGORY</p>
@@ -111,7 +111,7 @@ export default function HeroSection() {
                         </span>
                       </p>
 
-                      <button
+                      {/* <button
                         onClick={() => {
                           addToCart(item);
                           toast.success('Added to Cart 🛒');
@@ -119,7 +119,7 @@ export default function HeroSection() {
                         className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black text-white rounded-full text-[11px] sm:text-sm hover:bg-gray-800 transition"
                       >
                         Add To Cart 🛒
-                      </button>
+                      </button> */}
                     </div>
 
                   </div>

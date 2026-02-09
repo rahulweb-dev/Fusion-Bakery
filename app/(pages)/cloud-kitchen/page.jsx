@@ -29,11 +29,11 @@ export default function page() {
   ];
   return (
     <div><CloudKitchenHero /><CuisinesBrowse />   <FloatingChocolates
-                items={[
-                  { src: "/chocolates/5787016.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
-                
-                ]}
-              />
+      items={[
+        { src: "/chocolates/5787016.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
+
+      ]}
+    />
       {/* <BannerSlider slides={Cloudbanners} /> */}
       {/* <WhyChooseUs /> */}
       <section className="w-full bg-[#8C9A6B4D] py-16 md:py-24">

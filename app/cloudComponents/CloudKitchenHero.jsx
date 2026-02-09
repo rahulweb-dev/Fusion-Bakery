@@ -3,40 +3,40 @@ import Image from "next/image";
 
 export default function CloudKitchenHero() {
   return (
-    <section className="w-full min-h-[80vh] flex items-center bg-gradient-to-r from-[#9AAF79] to-[#8EA46E]">
+    <section className="relative w-full min-h-[80vh] flex items-center">
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-10 gap-10">
+      {/* BACKGROUND IMAGE */}
+      <Image
+        src="/chocolates/cloud-kitchen.webp" // 👉 your background image
+        alt="Cloud kitchen food background"
+        fill
+        priority
+        className="object-cover"
+      />
 
-        {/* LEFT — TEXT BLOCK */}
-        <div className="text-white">
-          <p className="text-lg opacity-90">Introducing</p>
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
 
-          <h1 className="text-4xl md:text-6xl font-extrabold mt-1">
-            Fusion Cloud Kitchen
-          </h1>
+      {/* CONTENT */}
+      <div className="relative z-10 max-w-6xl  px-30  text-white">
+        <p className="text-lg opacity-90 tracking-wide">
+          Introducing
+        </p>
 
-          <p className="mt-4 text-base md:text-lg opacity-90 max-w-lg">
-            Delicious meals prepared daily using quality ingredients,
-            delivered hot to your doorstep.
-          </p>
+        <h1 className="text-4xl md:text-6xl font-extrabold mt-2">
+          Fusion Cloud Kitchen
+        </h1>
 
-          <button className="mt-8 px-8 py-3 rounded-full bg-[#E1F2B3] text-black font-semibold hover:bg-[#F1FFC9] transition">
-            Order now
-          </button>
-        </div>
+        <p className="mt-5 text-base md:text-lg opacity-90 max-w-2xl mx-auto leading-relaxed">
+          Delicious meals prepared daily using quality ingredients,
+          freshly cooked and delivered hot to your doorstep.
+        </p>
 
-        {/* RIGHT — IMAGE */}
-        <div className="flex justify-end md:justify-end">
-          <Image
-            src="/dummy-images/FireflyGemini_Flash_the_background_colour_should_be_linear__6B8E6E_to__8C9A6B_619898-removebg-preview 1.png"  // replace with your image
-            alt="Plated gourmet dish"
-            width={520}
-            height={520}
-            className=" drop-shadow-2xl md:max-w-330 w-full h-full "
-          />
-        </div>
-
+        <button className="mt-10 px-10 py-3 rounded-full bg-[#E1F2B3] text-black font-semibold hover:bg-[#F1FFC9] transition">
+          Order Now
+        </button>
       </div>
+
     </section>
   );
 }

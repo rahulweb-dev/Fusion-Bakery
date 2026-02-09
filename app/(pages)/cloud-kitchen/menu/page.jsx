@@ -8,22 +8,34 @@ export default function FoodPage() {
 
   // ---------------- DATA ----------------
   const foods = [
-    { name: 'Greens Salad', price: 180, category: 'Salads', img: '/food/salad.png', rating: 4.4, type: 'Veg' },
-    { name: 'Tofu Salad', price: 220, category: 'Salads', img: '/food/tofu.png', rating: 4.3, type: 'Veg' },
-    { name: 'Sprouts Salad', price: 190, category: 'Salads', img: '/food/sprouts.png', rating: 4.2, type: 'Veg' },
-    { name: 'Paneer Salad', price: 230, category: 'Salads', img: '/food/paneer.png', rating: 4.5, type: 'Veg' },
-    { name: 'Fruit Salad', price: 160, category: 'Salads', img: '/food/fruit.png', rating: 4.6, type: 'Veg' },
-    { name: 'Sweet Corn Salad', price: 170, category: 'Salads', img: '/food/corn.png', rating: 4.3, type: 'Veg' },
+    { name: 'Greens Salad', price: 180, category: 'Salads', img: '/Green-salad.gif', rating: 4.4, type: 'Veg' },
+    { name: 'Tofu Salad', price: 220, category: 'Salads', img: '/gif-images/tofu.gif', rating: 4.3, type: 'Veg' },
+    { name: 'Sprouts Salad', price: 190, category: 'Salads', img: '/gif-images/sproutes.gif', rating: 4.2, type: 'Veg' },
+    { name: 'Paneer Salad', price: 230, category: 'Salads', img: '/gif-images/panner-salad.gif', rating: 4.5, type: 'Veg' },
+    { name: 'Fruit Salad', price: 160, category: 'Salads', img: '/gif-images/fruit-salad.gif', rating: 4.6, type: 'Veg' },
+    { name: 'Sweet Corn Salad', price: 170, category: 'Salads', img: '/gif-images/corn.gif', rating: 4.3, type: 'Veg' },
 
     { name: 'Cheese Balls', price: 210, category: 'Fries', img: '/food/cheese-balls.png', rating: 4.4, type: 'Veg' },
     { name: 'Masala Vada', price: 160, category: 'Fries', img: '/food/vada.png', rating: 4.2, type: 'Veg' },
     { name: 'Veg Fingers', price: 190, category: 'Fries', img: '/food/veg-fingers.png', rating: 4.3, type: 'Veg' },
+    { name: 'Masala cashew', price: 210, category: 'Fries', img: '/food/cheese-balls.png', rating: 4.4, type: 'Veg' },
+    { name: 'Masala Almonds', price: 160, category: 'Fries', img: '/food/vada.png', rating: 4.2, type: 'Veg' },
+    { name: 'Makanas', price: 190, category: 'Fries', img: '/food/veg-fingers.png', rating: 4.3, type: 'Veg' },
 
     { name: 'Dark Chocolates', price: 220, category: 'Dessert', img: '/food/dark-choco.png', rating: 4.6, type: 'Veg' },
     { name: 'Cookies', price: 160, category: 'Dessert', img: '/food/cookies.png', rating: 4.4, type: 'Veg' },
+    { name: 'Nuts', price: 220, category: 'Dessert', img: '/food/dark-choco.png', rating: 4.6, type: 'Veg' },
+    { name: 'Seeds', price: 160, category: 'Dessert', img: '/food/cookies.png', rating: 4.4, type: 'Veg' },
+    { name: 'Choco Chips', price: 220, category: 'Dessert', img: '/food/dark-choco.png', rating: 4.6, type: 'Veg' },
+    { name: 'Butter Cookies', price: 160, category: 'Dessert', img: '/food/cookies.png', rating: 4.4, type: 'Veg' },
+
 
     { name: 'Poha', price: 120, category: 'Healthy Bowl', img: '/food/poha.png', rating: 4.4, type: 'Veg' },
     { name: 'Rajma Masala', price: 200, category: 'Healthy Bowl', img: '/food/rajma.png', rating: 4.5, type: 'Veg' },
+    { name: 'Sandwich', price: 120, category: 'Healthy Bowl', img: '/food/poha.png', rating: 4.4, type: 'Veg' },
+    { name: 'Chena Masala', price: 200, category: 'Healthy Bowl', img: '/food/rajma.png', rating: 4.5, type: 'Veg' },
+    { name: 'Millets Upma', price: 120, category: 'Healthy Bowl', img: '/food/poha.png', rating: 4.4, type: 'Veg' },
+    { name: 'Peanuts Masala', price: 200, category: 'Healthy Bowl', img: '/food/rajma.png', rating: 4.5, type: 'Veg' },
   ];
 
   const categories = ['All', ...new Set(foods.map(f => f.category))];
@@ -138,14 +150,14 @@ export default function FoodPage() {
             >
               <div
                 className="relative cursor-pointer overflow-hidden rounded-t-2xl"
-                onClick={() => setQuickView(item)}
+
               >
                 <Image
                   src={item.img}
                   width={300}
                   height={200}
                   alt={item.name}
-                  className="w-full h-[180px] object-contain"
+                  className="w-full  object-contain"
                 />
                 <span className="absolute top-2 left-2 w-5 h-5 border-2 border-green-600 flex items-center justify-center">
                   <span className="w-2.5 h-2.5 rounded-full bg-green-600" />
@@ -165,14 +177,12 @@ export default function FoodPage() {
                 </div>
 
                 <button
-                  onClick={() =>
-                    addToCart({ ...item, qty: qty[item.name] || 1 })
-                  }
+
                   className="mt-4 w-full border border-orange-500 text-orange-600
                   py-1.5 rounded-lg font-semibold text-sm
                   hover:bg-orange-500 hover:text-white transition"
                 >
-                  ADD
+                  Book Now
                 </button>
               </div>
             </div>
@@ -206,7 +216,7 @@ export default function FoodPage() {
               <button onClick={() => updateQty(quickView.name, +1)} className="w-8 h-8 border rounded-full">+</button>
             </div>
 
-            <button
+            {/* <button
               onClick={() => {
                 addToCart({ ...quickView, qty: qty[quickView.name] || 1 });
                 setQuickView(null);
@@ -214,7 +224,7 @@ export default function FoodPage() {
               className="mt-6 w-full bg-orange-500 text-white py-2 rounded-lg"
             >
               Add to Cart
-            </button>
+            </button> */}
           </div>
         </div>
       )}

@@ -99,7 +99,7 @@ export default function HeroSection() {
                         </span>
                       </p>
 
-                      <button
+                      {/* <button
                         onClick={() => {
                           addToCart(item);
                           toast.success('Added to Cart 🛒');
@@ -107,7 +107,7 @@ export default function HeroSection() {
                         className="px-4 py-2 rounded-full text-[11px] sm:text-sm
                           bg-[#4C2A1A] text-white hover:bg-[#2F2B28] transition">
                         Add To Cart 🛒
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </SwiperSlide>

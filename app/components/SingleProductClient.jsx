@@ -89,7 +89,7 @@ export default function SingleProductClient({ slug }) {
 
           {/* Buttons */}
           <div className='flex gap-4 mt-6'>
-            <button
+            {/* <button
               onClick={() => {
                 addToCart(product, qty);
                 toast.success(`Added ${qty} item(s) to Cart 🛒`);
@@ -97,7 +97,7 @@ export default function SingleProductClient({ slug }) {
               className='bg-black text-white px-6 py-3 rounded-xl'
             >
               Add to Cart 🛒
-            </button>
+            </button> */}
 
             <button
               onClick={() => {

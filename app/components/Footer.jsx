@@ -29,7 +29,7 @@ export default function Footer() {
               title: 'Corporate Gifting',
               links: [
                 ['Corporate Gifting', '/corporate-gifting'],
-                ['Bulk Orders', '/bulk-orders'],
+                ['Gifts', '/corporate-gifting/gifts'],
                 ['Festive Hampers', '/festive-hampers'],
                 ['Return Gifts', '/return-gifts'],
                 ['Custom Gift Boxes', '/custom-boxes'],

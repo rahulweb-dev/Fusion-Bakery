@@ -79,28 +79,28 @@ export default function Navbar() {
   ============================ */
   const cloudKitchenMenu = [
     { name: 'Menu', href: '/cloud-kitchen/menu' },
-    { name: 'Combos', href: '/food/combos' },
-    { name: 'Subscriptions', href: '/food/subscriptions' },
+    { name: 'Combos', href: '/cloud-kitchen/combos' },
+    { name: 'Subscriptions', href: '/cloud-kitchen/subscriptions' },
   ];
 
   const giftsMenu = [
     { name: 'Gift Hampers', href: '/corporate-gifts' },
-    { name: 'Bulk Orders', href: '/corporate-gifts/bulk' },
+    { name: 'Gifts', href: '/corporate-gifts/gifts' },
     { name: 'Custom Branding', href: '/corporate-gifts/custom' },
   ];
 
   const chocolatesMenu = [
     { name: 'All Chocolates', href: '/chocolates' },
-    { name: 'Gift Boxes', href: '/chocolates/gifts' },
+    { name: 'Gift Boxes', href: '/chocolates/gift-boxes' },
     { name: 'Premium Range', href: '/chocolates/premium' },
   ];
 
   const defaultMenu = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    select === 'Cloud Kitchen'
-      ? { name: 'Food', href: '/food' }
-      : { name: 'Products', href: '/products' },
+    // select === 'Cloud Kitchen'
+    //   ? { name: 'Food', href: '/food' }
+    //   : { name: 'Products', href: '/products' },
     { name: 'Contact', href: '/contact' },
   ];
 

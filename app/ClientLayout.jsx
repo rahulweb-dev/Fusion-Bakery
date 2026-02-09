@@ -17,7 +17,7 @@ export default function ClientLayout({ children }) {
       <Toaster position="top-center" />
     
       {!isAdminRoute && <Navbar />}
-      <ModalSelect />
+      {/* <ModalSelect /> */}
 
       <div className={!isAdminRoute ? "mt-40" : ""}>
         {children}

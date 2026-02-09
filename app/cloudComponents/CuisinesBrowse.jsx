@@ -56,8 +56,8 @@ export default function CuisinesBrowse() {
               onClick={() => setFoodType(t)}
               className={`px-6 py-3 rounded-2xl border text-sm font-semibold transition
               ${foodType === t
-                ? "bg-white shadow border-gray-300"
-                : "bg-transparent border-gray-200"}`}
+                  ? "bg-white shadow border-gray-300"
+                  : "bg-transparent border-gray-200"}`}
             >
               {t === "Veg" ? "🟢 VEG" : "🔴 NON-VEG"}
             </button>
@@ -72,8 +72,8 @@ export default function CuisinesBrowse() {
               onClick={() => setActiveTab(tab)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition
               ${activeTab === tab
-                ? "bg-black text-white"
-                : "bg-white border text-gray-700 hover:bg-gray-100"}`}
+                  ? "bg-black text-white"
+                  : "bg-white border text-gray-700 hover:bg-gray-100"}`}
             >
               {tab}
             </button>
@@ -81,15 +81,15 @@ export default function CuisinesBrowse() {
         </div>
 
         <div className="flex justify-end mb-6">
-  <Link
-    href="/cloud-kitchen/menu"
-    className="group flex items-center gap-2 text-sm font-semibold
+          <Link
+            href="/cloud-kitchen/menu"
+            className="group flex items-center gap-2 text-sm font-semibold
     text-orange-600 hover:text-orange-700 transition"
-  >
-    Explore More
-    <span className="transition-transform group-hover:translate-x-1">→</span>
-  </Link>
-</div>
+          >
+            Explore More
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
 
         {/* SLIDER */}
         <div className="relative">
