@@ -14,7 +14,7 @@ import { BiFoodMenu } from "react-icons/bi";
 import { BsBag } from "react-icons/bs";
 import { MdCategory } from "react-icons/md";
 
-const ModalSelect = dynamic(() => import('./ModalSelect'), { ssr: false });
+// const ModalSelect = dynamic(() => import('./ModalSelect'), { ssr: false });
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -202,10 +202,10 @@ export default function Navbar() {
       </nav>
 
       {/* MODAL */}
-      <ModalSelect
+      {/* <ModalSelect
         openSelectState={openSelectState}
         setOpenSelectState={setOpenSelectState}
-      />
+      /> */}
 
       {/* ===== MOBILE BOTTOM NAV ===== */}
 

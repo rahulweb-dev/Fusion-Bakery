@@ -19,13 +19,15 @@ export default function CuisinesBrowse() {
   const [formData, setFormData] = useState({ name: "", phone: "" });
 
   const cuisines = [
-    { name: "Greens", img: "/Green-salad.gif", category: "Salads", type: "Veg" },
-    { name: "Tofu", img: "/food/tofu.png", category: "Salads", type: "Veg" },
-    { name: "Paneer", img: "/food/paneer.png", category: "Salads", type: "Veg" },
-
     { name: "Chicken Salad", img: "/food/chicken.png", category: "Salads", type: "Non-Veg" },
     { name: "Egg Tofu", img: "/food/tofu.png", category: "Starters", type: "Non-Veg" },
     { name: "Grilled Fish", img: "/food/fish.png", category: "Grill", type: "Non-Veg" },
+    { name: 'Greens Salad', price: 180, category: 'Salads', img: '/Green-salad.gif', rating: 4.4, type: 'Veg' },
+    { name: 'Tofu Salad', price: 220, category: 'Salads', img: '/gif-images/tofu.gif', rating: 4.3, type: 'Veg' },
+    { name: 'Sprouts Salad', price: 190, category: 'Salads', img: '/gif-images/sproutes.gif', rating: 4.2, type: 'Veg' },
+    { name: 'Paneer Salad', price: 230, category: 'Salads', img: '/gif-images/panner-salad.gif', rating: 4.5, type: 'Veg' },
+    { name: 'Fruit Salad', price: 160, category: 'Salads', img: '/gif-images/fruit-salad.gif', rating: 4.6, type: 'Veg' },
+    { name: 'Sweet Corn Salad', price: 170, category: 'Salads', img: '/gif-images/corn.gif', rating: 4.3, type: 'Veg' },
   ];
 
   useEffect(() => {
@@ -133,7 +135,7 @@ export default function CuisinesBrowse() {
 
                     <div className="flex justify-between items-center mt-3">
                       <div>
-                        <p className="font-bold text-lg">₹30</p>
+                        <p className="font-bold text-lg">₹{food.price}</p>
                         <p className="text-xs text-gray-400 line-through">₹150</p>
                       </div>
 
@@ -157,10 +159,10 @@ export default function CuisinesBrowse() {
 
           {/* NAV BUTTONS */}
           <button className="prevBtn absolute left-[-20px] top-1/2 -translate-y-1/2
-          w-10 h-10 bg-white rounded-full shadow border">❮</button>
+          w-10 h-10 bg-white rounded-full shadow border z-20">❮</button>
 
           <button className="nextBtn absolute right-[-20px] top-1/2 -translate-y-1/2
-          w-10 h-10 bg-white rounded-full shadow border">❯</button>
+          w-10 h-10 bg-white rounded-full shadow border z-20">❯</button>
         </div>
       </div>
 

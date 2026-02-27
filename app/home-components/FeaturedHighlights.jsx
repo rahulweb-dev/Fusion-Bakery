@@ -3,20 +3,22 @@
 import Image from 'next/image';
 
 const highlights = [
+
+  
   {
     title: 'Cloud Kitchen',
     desc: 'Freshly prepared meals crafted with quality ingredients and delivered with consistency.',
-    img: '/images/highlight-kitchen.jpg',
+    img: 'https://i.pinimg.com/736x/ef/9d/d8/ef9dd8adaf2d89b356ae89531c7ae517.jpg',
   },
   {
     title: 'Corporate Gifting',
     desc: 'Premium, thoughtfully curated gift solutions designed for impactful brand experiences.',
-    img: '/images/highlight-gifts.jpg',
+    img: 'https://i.pinimg.com/736x/f2/79/3e/f2793e5b7117bd8e9168fb9087805e40.jpg',
   },
   {
     title: 'Handcrafted Chocolates',
     desc: 'Artisanal chocolates made in small batches with rich flavors and elegant finishes.',
-    img: '/images/highlight-chocolates.jpg',
+    img: 'https://i.pinimg.com/736x/67/c0/b7/67c0b7cda5382f7a5c4e9bf182a839f7.jpg',
   },
 ];
 

@@ -13,7 +13,7 @@ export default function AboutUs() {
             overflow-hidden flex items-center justify-center">
 
             <Image
-              src="/images/about-us.jpg" // replace with your image
+              src="/images/01.webp" // replace with your image
               alt="About Fusionn"
               width={700}
               height={700}

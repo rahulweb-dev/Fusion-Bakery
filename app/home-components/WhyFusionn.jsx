@@ -48,7 +48,7 @@ export default function WhyFusionn() {
             overflow-hidden flex items-center justify-center">
 
             <Image
-              src="/images/why-fusionn.jpg" // replace with your image
+              src="/dummy-images/hero.png" // replace with your image
               alt="Why Fusionn"
               width={600}
               height={600}
