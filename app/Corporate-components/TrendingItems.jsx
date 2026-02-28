@@ -76,11 +76,11 @@ export default function TrendingItems() {
           </Swiper>
 
           {/* Buttons */}
-          <button className="prev-btn absolute left-[-10px] top-[40%] z-50 bg-[#C8A26A] text-white p-2 rounded-full shadow-lg hover:bg-[#8B5E34]">
+          <button className="prev-btn absolute left-[-10px] top-[40%] z-2 bg-[#C8A26A] text-white p-2 rounded-full shadow-lg hover:bg-[#8B5E34]">
             ‹
           </button>
 
-          <button className="next-btn absolute right-[-10px] top-[40%] z-50 bg-[#C8A26A] text-white p-2 rounded-full shadow-lg hover:bg-[#8B5E34]">
+          <button className="next-btn absolute right-[-10px] top-[40%] z-2 bg-[#C8A26A] text-white p-2 rounded-full shadow-lg hover:bg-[#8B5E34]">
             ›
           </button>
         </div>

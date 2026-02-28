@@ -9,7 +9,7 @@ export default function WhyFusionn() {
 
         
         {/* LEFT CONTENT */}
-        <div className="relative z-10 max-w-xl">
+        <div className="relative z-2 max-w-xl">
 
           {/* Section label */}
           <div className="flex items-center gap-4 mb-6">

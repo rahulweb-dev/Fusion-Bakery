@@ -18,7 +18,7 @@ export default function CorporateGiftingHero() {
       <div className="absolute left-[-120px] top-[-80px] w-[420px] h-[420px] rounded-full bg-white/25" />
       <div className="absolute right-[10%] bottom-[-120px] w-[360px] h-[360px] rounded-full bg-white/30" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="relative z-2 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         {/* LEFT CONTENT */}
         <div>

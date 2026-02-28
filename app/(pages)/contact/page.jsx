@@ -23,7 +23,7 @@ export default function ContactPage() {
       </div>
 
       {/* FORM + NEWSLETTER CARD */}
-      <div className="max-w-6xl mx-auto px-6 -mt-20 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 -mt-20 relative z-2">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 bg-white rounded-3xl shadow-xl p-10">
 
           {/* Contact Form */}

@@ -1,10 +1,12 @@
 import ProductCard from "@/app/components/ProductCard";
 import { products } from "../../../data/products";
+import HeroBanner from "@/app/cloudComponents/heroBanner";
 
 
 export default function ProductsPage() {
   return (
     <div className="py-12 max-w-7xl mx-auto px-4">
+      <HeroBanner/>
       <h1 className="text-3xl font-bold text-center mb-10">
         Corporate Gift, Corporate Gifting Ideas
       </h1>

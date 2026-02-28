@@ -2,6 +2,7 @@
 import GiftingSection from './components/GiftingSection';
 import TestimonialSection from './components/TestimonialSection';
 import { useSelect } from './context/SelectContext';
+import HeroSection from './home-components/HeroSection';
 
 import TrustedPartners from './corporateComponents/TrustedPartners';
 import AboutUs from './home-components/AboutUs';
@@ -55,8 +56,8 @@ export default function Home() {
   return (
     <>
       {/* <Header/> */}
-      <HomeHero />
- 
+      {/* <HomeHero /> */}
+      <HeroSection />
       <OurOfferings />
       <WhyFusionn />
       <AboutUs />

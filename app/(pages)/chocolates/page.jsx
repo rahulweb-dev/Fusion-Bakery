@@ -11,13 +11,16 @@ import "swiper/css/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FloatingChocolates from './FloatingChocolates';
+import ChocolateHero from '@/app/Chocolate-components/ChocolateHero';
+import ChocolateProducts from '@/app/Chocolate-components/ChocolateProducts';
 
 
 export default function page() {
   return (
     <div>
       <section data-float-section data-light="#C6A44B33" id="hero" className="relative ...">
-        <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden">
+        <ChocolateHero />
+        {/* <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden">
           <Image
             src="https://lepure.in/cdn/shop/files/bd_desktop.png?v=1754906333&width=2000"
             alt="Celebration Chocolate Bar"
@@ -25,7 +28,7 @@ export default function page() {
             priority
             className="object-cover object-center"
           />
-          <div className="relative z-10 max-w-6xl w-full px-6 md:px-10 flex items-center">
+          <div className="relative z-2 max-w-6xl w-full px-6 md:px-10 flex items-center">
             <div className="max-w-2xl">
               <h1 className="text-white text-4xl md:text-6xl font-light leading-tight">
                 Introducing <br />
@@ -41,12 +44,15 @@ export default function page() {
               </button>
             </div>
           </div>
-        </section></section>
+        </section> */}
+
+      </section>
       <ChocolateAboutSection />
+      {/* <ChocolateProducts /> */}
       <FloatingChocolates
         items={[
           { src: "/chocolates/choco1.png", w: 120, h: 120, speed: 3, className: "top-10 left-10" },
-        
+
         ]}
       />
       <ChocolateCarousel />
@@ -213,7 +219,7 @@ export function ChocolateCarousel() {
                     </h3>
 
                     <p className="text-gray-600 text-sm mt-1">
-                      ${p.price}
+                      ₹{p.price}
                     </p>
                   </div>
                 </div>

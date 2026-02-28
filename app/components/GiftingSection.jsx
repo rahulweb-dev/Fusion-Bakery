@@ -8,7 +8,7 @@ export default function GiftingSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#F4EEE6] to-[#E6D8C4]" />
 
       {/* TITLE SECTION */}
-      <div className="relative z-20 max-w-3xl mx-auto px-4 text-center py-12 sm:py-16 space-y-3">
+      <div className="relative z-2 max-w-3xl mx-auto px-4 text-center py-12 sm:py-16 space-y-3">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2F2B28] tracking-wide">
           How to Order?
         </h1>

@@ -8,7 +8,7 @@ export default function AutoScrollText() {
   ];
 
   return (
-    <div className="w-full overflow-hidden bg-[#1a1a1a] py-3 fixed top-0 z-10">
+    <div className="w-full overflow-hidden bg-[#72401D] py-3 fixed top-0 z-10">
       <div className="flex whitespace-nowrap animate-marquee">
         {[...Array(4)].map((_, i) => (
           <div key={i} className="flex items-center">

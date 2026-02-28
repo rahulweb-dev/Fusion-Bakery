@@ -18,7 +18,7 @@ export default function CloudKitchenHero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-6xl  px-30  text-white">
+      <div className="relative z-2 max-w-6xl  px-30  text-white">
         <p className="text-lg opacity-90 tracking-wide">
           Introducing
         </p>

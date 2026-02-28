@@ -80,19 +80,19 @@ export default function Navbar() {
   const cloudKitchenMenu = [
     { name: 'Menu', href: '/cloud-kitchen/menu' },
     { name: 'Combos', href: '/cloud-kitchen/combos' },
-    { name: 'Subscriptions', href: '/cloud-kitchen/subscriptions' },
+    // { name: 'Subscriptions', href: '/cloud-kitchen/subscriptions' },
   ];
 
   const giftsMenu = [
     { name: 'Gift Hampers', href: '/corporate-gifts' },
     { name: 'Gifts', href: '/corporate-gifts/gifts' },
-    { name: 'Custom Branding', href: '/corporate-gifts/custom' },
+    // { name: 'Custom Branding', href: '/corporate-gifts/custom' },
   ];
 
   const chocolatesMenu = [
     { name: 'All Chocolates', href: '/chocolates' },
     { name: 'Gift Boxes', href: '/chocolates/gift-boxes' },
-    { name: 'Premium Range', href: '/chocolates/premium' },
+    // { name: 'Premium Range', href: '/chocolates/premium' },
   ];
 
   const defaultMenu = [
@@ -108,17 +108,17 @@ export default function Navbar() {
     food: [
       { name: 'Menu', href: '/cloud-kitchen/menu' },
       { name: 'Combos', href: '/food/combos' },
-      { name: 'Subscriptions', href: '/food/subscriptions' },
+      // { name: 'Subscriptions', href: '/food/subscriptions' },
     ],
     gifts: [
       { name: 'Gift Hampers', href: '/corporate-gifts' },
       { name: 'Bulk Orders', href: '/corporate-gifts/bulk' },
-      { name: 'Custom Branding', href: '/corporate-gifts/custom' },
+      // { name: 'Custom Branding', href: '/corporate-gifts/custom' },
     ],
     chocolates: [
       { name: 'All Chocolates', href: '/chocolates' },
       { name: 'Gift Boxes', href: '/chocolates/gifts' },
-      { name: 'Premium Range', href: '/chocolates/premium' },
+      // { name: 'Premium Range', href: '/chocolates/premium' },
     ],
   };
 

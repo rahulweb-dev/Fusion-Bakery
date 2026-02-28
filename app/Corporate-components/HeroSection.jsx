@@ -117,14 +117,14 @@ export default function HeroSection() {
 
           {/* Nav Buttons */}
           <button className="prev-btn absolute left-[-8px] sm:left-[-18px] top-[45%] -translate-y-1/2
-            w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center z-30
+            w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center z-2
             bg-[#C8A26A] text-white border border-[#8B5E34]
             rounded-full shadow-lg hover:bg-[#8B5E34] transition">
             ❮
           </button>
 
           <button className="next-btn absolute right-[-8px] sm:right-[-18px] top-[45%] -translate-y-1/2
-            w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center z-30
+            w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center z-2
             bg-[#C8A26A] text-white border border-[#8B5E34]
             rounded-full shadow-lg hover:bg-[#8B5E34] transition">
             ❯

@@ -23,7 +23,7 @@ export default function AboutUs() {
         </div>
 
         {/* RIGHT – CONTENT */}
-        <div className="relative z-10 max-w-xl ml-auto">
+        <div className="relative z-2 max-w-xl ml-auto">
 
           {/* Section label */}
           <div className="flex items-center gap-4 mb-6">

@@ -72,7 +72,7 @@ function OfferingCard({ title, href, border, actionColor, image }) {
           bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
 
         {/* TITLE */}
-        <div className="absolute bottom-6 left-6 z-10">
+        <div className="absolute bottom-6 left-6 z-2">
           <p className="text-white text-xl font-medium tracking-wide">
             {title}
           </p>
